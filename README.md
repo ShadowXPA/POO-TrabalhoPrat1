@@ -1,3 +1,3 @@
 # POO-TrabalhoPrat1
 
-[Statement](./POO - 2021 - Enunciado TP.pdf)
+[Statement](<POO - 2021 - Enunciado TP.pdf>)
