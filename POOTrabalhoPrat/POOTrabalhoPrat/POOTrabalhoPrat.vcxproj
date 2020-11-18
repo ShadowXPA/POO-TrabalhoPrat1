@@ -139,11 +139,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Castelo.cpp" />
+    <ClCompile Include="Continente.cpp" />
+    <ClCompile Include="Duna.cpp" />
+    <ClCompile Include="Fortaleza.cpp" />
+    <ClCompile Include="Ilha.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mina.cpp" />
+    <ClCompile Include="Montanha.cpp" />
+    <ClCompile Include="Pescaria.cpp" />
+    <ClCompile Include="Planicie.cpp" />
+    <ClCompile Include="Refugio_dos_Piratas.cpp" />
     <ClCompile Include="Territorio.cpp" />
+    <ClCompile Include="Territorio_Inicial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Castelo.h" />
+    <ClInclude Include="Continente.h" />
+    <ClInclude Include="Duna.h" />
+    <ClInclude Include="Fortaleza.h" />
+    <ClInclude Include="Ilha.h" />
+    <ClInclude Include="Mina.h" />
+    <ClInclude Include="Montanha.h" />
+    <ClInclude Include="Pescaria.h" />
+    <ClInclude Include="Planicie.h" />
+    <ClInclude Include="Refugio_dos_Piratas.h" />
     <ClInclude Include="Territorio.h" />
+    <ClInclude Include="Territorio_Inicial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

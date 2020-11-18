@@ -1,8 +1,9 @@
 #pragma once
-#include <string>
 using namespace std;
+#include "Territorio.h"
 
-class Territorio
+
+class Territorio_Inicial
 {
 	protected:
 		string Nome = "";
@@ -11,7 +12,6 @@ class Territorio
 		int Criacao_produtos = 0;
 		int Criacao_ouro = 0;
 	public:
-		Territorio(string Nome);
-		Territorio(string Nome, int Resistencia, int Pontos_vitoria, int Criacao_produtos, int Criacao_ouro);
+		Territorio_Inicial(string Nome, int Resistencia, int Pontos_vitoria, int Criacao_produtos, int Criacao_ouro);
 };
 

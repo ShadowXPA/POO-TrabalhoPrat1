@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Territorios">
+      <UniqueIdentifier>{6a4bad1d-63a2-4e98-8285-3bbc414488cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Territorios">
+      <UniqueIdentifier>{c4713b6e-1a45-44f2-9ba5-fd8f4b69be0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,9 +27,75 @@
     <ClCompile Include="Territorio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Territorio_Inicial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Continente.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Planicie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Montanha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fortaleza.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mina.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Duna.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Castelo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ilha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Refugio_dos_Piratas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pescaria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Territorio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Territorio_Inicial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Continente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Planicie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Montanha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fortaleza.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Duna.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Castelo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ilha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Refugio_dos_Piratas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pescaria.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
