@@ -19,84 +19,102 @@
     <Filter Include="Header Files\Territorios">
       <UniqueIdentifier>{c4713b6e-1a45-44f2-9ba5-fd8f4b69be0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Territorios\Territorio_Inicial">
+      <UniqueIdentifier>{fb7fb856-a02c-4f7c-b805-09ea13be451e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Territorios\Continente">
+      <UniqueIdentifier>{5754993d-ad27-4fde-ac70-442f77500bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Territorios\Ilha">
+      <UniqueIdentifier>{4535cff4-996d-450e-ab0f-8ed9a16dd82d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Territorios\Territorio_Inicial">
+      <UniqueIdentifier>{913ad30b-bcee-4233-9928-2fef2884fbb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Territorios\Continente">
+      <UniqueIdentifier>{d464fb97-2942-4643-89b3-71c0e5dc8aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Territorios\Ilha">
+      <UniqueIdentifier>{9bb57135-a517-4a92-a24d-7ed958b4d8fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Territorio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Territorio_Inicial.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Continente.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Planicie.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Montanha.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fortaleza.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Territorios\Continente</Filter>
     </ClCompile>
     <ClCompile Include="Mina.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Duna.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Castelo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Territorios\Continente</Filter>
     </ClCompile>
     <ClCompile Include="Ilha.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Territorios\Ilha</Filter>
     </ClCompile>
     <ClCompile Include="Refugio_dos_Piratas.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Territorios\Ilha</Filter>
     </ClCompile>
     <ClCompile Include="Pescaria.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Territorios\Ilha</Filter>
+    </ClCompile>
+    <ClCompile Include="Territorio_Inicial.cpp">
+      <Filter>Source Files\Territorios\Territorio_Inicial</Filter>
+    </ClCompile>
+    <ClCompile Include="Castelo.cpp">
+      <Filter>Source Files\Territorios\Continente</Filter>
+    </ClCompile>
+    <ClCompile Include="Duna.cpp">
+      <Filter>Source Files\Territorios\Continente</Filter>
+    </ClCompile>
+    <ClCompile Include="Fortaleza.cpp">
+      <Filter>Source Files\Territorios\Continente</Filter>
+    </ClCompile>
+    <ClCompile Include="Montanha.cpp">
+      <Filter>Source Files\Territorios\Continente</Filter>
+    </ClCompile>
+    <ClCompile Include="Planicie.cpp">
+      <Filter>Source Files\Territorios\Continente</Filter>
+    </ClCompile>
+    <ClCompile Include="Territorio.cpp">
+      <Filter>Source Files\Territorios</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Territorio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Territorio_Inicial.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Territorios\Territorio_Inicial</Filter>
     </ClInclude>
-    <ClInclude Include="Continente.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Planicie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Montanha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fortaleza.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mina.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Duna.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Castelo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ilha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Refugio_dos_Piratas.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Territorio.h">
+      <Filter>Header Files\Territorios</Filter>
     </ClInclude>
     <ClInclude Include="Pescaria.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Territorios\Ilha</Filter>
+    </ClInclude>
+    <ClInclude Include="Refugio_dos_Piratas.h">
+      <Filter>Header Files\Territorios\Ilha</Filter>
+    </ClInclude>
+    <ClInclude Include="Castelo.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Continente.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Duna.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Fortaleza.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Ilha.h">
+      <Filter>Header Files\Territorios\Ilha</Filter>
+    </ClInclude>
+    <ClInclude Include="Mina.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Montanha.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
+    </ClInclude>
+    <ClInclude Include="Planicie.h">
+      <Filter>Header Files\Territorios\Continente</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

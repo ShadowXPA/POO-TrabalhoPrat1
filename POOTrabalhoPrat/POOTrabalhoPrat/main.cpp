@@ -73,7 +73,7 @@ void CreateTerritories(string Name_Territorie, int N_Territories) {
 	{
 		//Tipo de territorio
 		if (Name_Territorie == "mina") {
-			Mina mina();
+			Mina *mina = new Mina();
 			N_Territories--;
 		}
 		else if (Name_Territorie == "montanha") {

@@ -3,15 +3,12 @@ using namespace std;
 #include "Territorio.h"
 
 
-class Territorio_Inicial
+class Territorio_Inicial:Territorio
 {
 	protected:
-		string Nome = "";
-		int Resistencia = 0;
-		int Pontos_Vitoria = 0;
-		int Criacao_produtos = 0;
-		int Criacao_ouro = 0;
+		
 	public:
-		Territorio_Inicial(string Nome, int Resistencia, int Pontos_vitoria, int Criacao_produtos, int Criacao_ouro);
+		Territorio(string Nome);
+		Territorio_Inicial(string Nome);
 };
 
