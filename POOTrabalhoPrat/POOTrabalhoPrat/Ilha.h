@@ -4,4 +4,5 @@
 class Ilha : public Territorio {
 	public:
 	Ilha(string, int, int, int);
+	~Ilha();
 };

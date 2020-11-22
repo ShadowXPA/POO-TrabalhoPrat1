@@ -4,4 +4,5 @@
 class Castelo : public Continente {
 	public:
 	Castelo();
+	~Castelo();
 };

@@ -8,4 +8,5 @@ class Imperio_Jogador {
 	int forca_militar;
 	public:
 	Imperio_Jogador();
+	~Imperio_Jogador();
 };

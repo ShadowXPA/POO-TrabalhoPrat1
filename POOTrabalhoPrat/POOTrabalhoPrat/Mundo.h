@@ -10,4 +10,5 @@ class Mundo {
 	Imperio_Jogador imperio;
 	public:
 	Mundo();
+	~Mundo();
 };

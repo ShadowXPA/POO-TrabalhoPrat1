@@ -5,3 +5,7 @@ Continente::Continente(string nome, int resistencia, int criacao_produtos, int c
 	s_count++;
 	this->nome += to_string(s_count);
 }
+
+Continente::~Continente()
+{
+}

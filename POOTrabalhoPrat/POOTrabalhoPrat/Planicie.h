@@ -4,4 +4,5 @@
 class Planicie : public Continente {
 	public:
 	Planicie();
+	~Planicie();
 };

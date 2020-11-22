@@ -11,6 +11,7 @@ class Territorio {
 	int criacao_ouro;
 	public:
 	Territorio(string, int, int, int, int);
+	~Territorio();
 	string get_nome();
 	int get_pontos_vitoria();
 	int get_resistencia();

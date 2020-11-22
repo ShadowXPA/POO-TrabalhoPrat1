@@ -4,4 +4,5 @@
 class Duna : public Continente {
 	public:
 	Duna();
+	~Duna();
 };

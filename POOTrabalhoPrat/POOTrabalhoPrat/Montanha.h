@@ -4,4 +4,5 @@
 class Montanha : public Continente {
 	public:
 	Montanha();
+	~Montanha();
 };

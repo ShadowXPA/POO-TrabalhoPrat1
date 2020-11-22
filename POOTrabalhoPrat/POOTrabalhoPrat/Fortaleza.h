@@ -4,4 +4,5 @@
 class Fortaleza : public Continente {
 	public:
 	Fortaleza();
+	~Fortaleza();
 };

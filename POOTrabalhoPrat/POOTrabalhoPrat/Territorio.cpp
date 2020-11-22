@@ -7,6 +7,10 @@ Territorio::Territorio(string nome, int pontos_vitoria, int resistencia, int cri
 	this->criacao_ouro = criacao_ouro;
 }
 
+Territorio::~Territorio()
+{
+}
+
 string Territorio::get_nome() {
 	return this->nome;
 }

@@ -4,4 +4,5 @@
 class Continente : public Territorio {
 	public:
 	Continente(string, int, int, int);
+	~Continente();
 };

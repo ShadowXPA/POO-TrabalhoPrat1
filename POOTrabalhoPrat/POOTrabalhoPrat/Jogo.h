@@ -5,4 +5,7 @@ class Jogo {
 	private:
 	Mundo mundo;
 	int pontuacao;
+	public:
+	Jogo();
+	~Jogo();
 };

@@ -4,4 +4,5 @@
 class Territorio_Inicial : public Territorio {
 	public:
 	Territorio_Inicial();
+	~Territorio_Inicial();
 };

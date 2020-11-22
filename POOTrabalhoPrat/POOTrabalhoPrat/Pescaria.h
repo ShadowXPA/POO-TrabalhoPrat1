@@ -4,4 +4,5 @@
 class Pescaria : public Ilha {
 	public:
 	Pescaria();
+	~Pescaria();
 };

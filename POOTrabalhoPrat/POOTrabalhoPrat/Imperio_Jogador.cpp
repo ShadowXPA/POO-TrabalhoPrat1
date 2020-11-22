@@ -6,3 +6,7 @@ Imperio_Jogador::Imperio_Jogador() {
 	this->cofre = 0;
 	this->forca_militar = 0;
 }
+
+Imperio_Jogador::~Imperio_Jogador()
+{
+}
