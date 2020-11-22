@@ -1,8 +1,7 @@
 #pragma once
-using namespace std;
 #include "Territorio.h"
 
-class Continente:Territorio
-{
+class Continente : public Territorio {
+	public:
+	Continente(string, int, int, int);
 };
-

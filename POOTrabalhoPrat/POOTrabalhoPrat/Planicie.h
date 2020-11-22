@@ -1,8 +1,7 @@
 #pragma once
-using namespace std;
 #include "Continente.h"
 
-class Planicie:Continente
-{
+class Planicie : public Continente {
+	public:
+	Planicie();
 };
-

@@ -2,16 +2,20 @@
 #include <string>
 using namespace std;
 
-class Territorio
-{
+class Territorio {
 	protected:
-		string Nome = "";
-		int Resistencia = 0;
-		int Pontos_Vitoria = 0;
-		int Criacao_produtos = 0;
-		int Criacao_ouro = 0;
+	string nome;
+	int pontos_vitoria;
+	int resistencia;
+	int criacao_produtos;
+	int criacao_ouro;
 	public:
-		Territorio(string Nome);
-		Territorio(string Nome, int Resistencia, int Pontos_vitoria, int Criacao_produtos, int Criacao_ouro);
+	Territorio(string, int, int, int, int);
+	string get_nome();
+	int get_pontos_vitoria();
+	int get_resistencia();
+	int get_criacao_produtos();
+	int get_criacao_ouro();
+	virtual void set_criacao_produtos(int) = 0;
+	virtual void set_criacao_ouro(int) = 0;
 };
-

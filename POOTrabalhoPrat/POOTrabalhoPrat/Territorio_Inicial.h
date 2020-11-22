@@ -1,14 +1,7 @@
 #pragma once
-using namespace std;
 #include "Territorio.h"
 
-
-class Territorio_Inicial:Territorio
-{
-	protected:
-		
+class Territorio_Inicial : public Territorio {
 	public:
-		Territorio(string Nome);
-		Territorio_Inicial(string Nome);
+	Territorio_Inicial();
 };
-

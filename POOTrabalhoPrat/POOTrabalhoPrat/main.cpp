@@ -4,16 +4,6 @@
 #include <vector>
 
 #include "Territorio.h"
-#include "Mina.h"
-#include "Montanha.h"
-#include "Planicie.h"
-#include "Fortaleza.h"
-#include "Duna.h"
-#include "Refugio_dos_Piratas.h"
-#include "Pescaria.h"
-#include "Castelo.h"
-
-using namespace std;
 
 void UploadFile(string File_Name);
 void CreateTerritories(string Name_Territorie, int N_Territories);
@@ -73,7 +63,7 @@ void CreateTerritories(string Name_Territorie, int N_Territories) {
 	{
 		//Tipo de territorio
 		if (Name_Territorie == "mina") {
-			Mina *mina = new Mina();
+			//Mina *mina = new Mina();
 			N_Territories--;
 		}
 		else if (Name_Territorie == "montanha") {
@@ -97,7 +87,7 @@ void CreateTerritories(string Name_Territorie, int N_Territories) {
 			N_Territories--;
 		}
 		else if (Name_Territorie == "refugio dos piratas") {
-			Refugio_dos_Piratas refugio();
+			Refugio_Piratas refugio();
 			N_Territories--;
 		}
 		else if (Name_Territorie == "pescaria") {

@@ -1,8 +1,7 @@
 #pragma once
-using namespace std;
 #include "Continente.h"
 
-class Castelo:Continente
-{
+class Castelo : public Continente {
+	public:
+	Castelo();
 };
-
