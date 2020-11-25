@@ -29,6 +29,40 @@ void Jogo::cmd_conquista(const string nome) {
 	this->mundo->conquistar_territorio(nome);
 }
 
+void Jogo::cmd_carrega(const string nome_fich) {
+	ifstream File(nome_fich);
+	string Line;
+	if (File.is_open()) {
+		while (getline(File, Line)) {
+			this->ler_cmd(Line);
+			cout << Line;
+		}
+		File.close();
+	}
+	cout << "Erro ao carregar o ficheiro!\n";
+}
+
+void Jogo::cmd_lista(const string nome){
+	if (nome == "") {
+		cout << "Ano: " << this->get_ano();
+		cout << "\nTurno: " << this->get_turno();
+		cout << "\nUltimo fator sorte gerado: " ;//TODO adicionar o ultimo fator de sorte
+		cout << "\nTerritorios conquistados:";
+		this->mundo->mostra_territorios_imperio();
+		this->mundo->mostra_territorios_nao_conquistados();
+		//TODO
+		//Produtos (valor em armazém, valor máximo, produção no turno atual)
+		//Ouro(valor em armazém, valor máximo, produção no turno atual)
+		//Força militar(valor atual, valor máximo)
+		//Tecnologias existentes(nome, preço, resumo do objetivo, adquirida / não adquirida)
+		//Evento que vai ocorrer(nome, resumo dos efeitos)
+		//Pontuação final
+	}
+	else {
+
+	}
+}
+
 Jogo::Jogo() {
 	srand(time(nullptr));
 	this->turno = 0;
@@ -54,13 +88,21 @@ void Jogo::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
 	auto str = stringSplit(comando, " ");
 	if (str[0] == "cria") {
-		if (str.size() != 3)
+		if (str.size() < 3)
 			return;
 		cmd_cria(str[1], stoi(str[2]));
 	} else if (str[0] == "conquista") {
-		if (str.size() != 2)
+		if (str.size() < 2)
 			return;
 		cmd_conquista(str[1]);
+	} else if (str[0] == "carrega") {
+		if (str.size() < 2)
+			return;
+		cmd_carrega(str[1]);
+	} else if (str[0] == "lista") {
+		if (str.size() < 2)
+			cmd_lista("");
+		cmd_lista(str[1]);
 	}
 }
 

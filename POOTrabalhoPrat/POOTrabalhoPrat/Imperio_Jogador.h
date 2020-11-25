@@ -4,6 +4,7 @@
 #include <vector>
 #include <typeinfo>
 #include <random>
+#include <iostream>
 
 class Imperio_Jogador {
 private:
@@ -20,7 +21,12 @@ private:
 public:
 	Imperio_Jogador();
 	~Imperio_Jogador();
+	int get_armazem();
+	int get_cofre();
+	int get_forca_militar();
 	int tamanho_territorios_conquistados();
 	bool pode_conquistar_ilha();
 	void adicionar_territorio_conquistado(Territorio *);
+	void mostra_territorios_conquistados();
+	vector<Territorio*>::iterator encontra_territorio(Territorio *);
 };

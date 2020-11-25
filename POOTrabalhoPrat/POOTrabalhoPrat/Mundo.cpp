@@ -29,3 +29,19 @@ void Mundo::conquistar_territorio(const string nome) {
 		}
 	}
 }
+
+void Mundo::mostra_territorios_imperio() {
+	this->imperio->mostra_territorios_conquistados();
+}
+
+void Mundo::mostra_territorios_nao_conquistados(){
+	for (int i = 0; i < this->territorios.size(); i++) {
+		auto it = this->imperio->encontra_territorio(this->territorios[i]);
+		if (it == this->territorios.end()) {
+			cout << "\nNome: " << this->territorios[i]->get_nome();
+			cout << "\nResistencia: " << this->territorios[i]->get_resistencia();
+			cout << "\nProducao de produtos: " << this->territorios[i]->get_criacao_produtos();
+			cout << "\nProducao de ouro: " << this->territorios[i]->get_criacao_ouro();
+		}
+	}
+}

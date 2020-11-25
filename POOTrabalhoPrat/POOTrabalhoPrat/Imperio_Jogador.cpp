@@ -9,6 +9,21 @@ Imperio_Jogador::Imperio_Jogador() {
 
 Imperio_Jogador::~Imperio_Jogador() {}
 
+int Imperio_Jogador::get_armazem()
+{
+	return this->armazem;
+}
+
+int Imperio_Jogador::get_cofre()
+{
+	return this->cofre;
+}
+
+int Imperio_Jogador::get_forca_militar()
+{
+	return this->forca_militar;
+}
+
 int Imperio_Jogador::tamanho_territorios_conquistados() {
 	return this->territorios_conquistados.size();
 }
@@ -33,4 +48,17 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	} else {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
+}
+
+void Imperio_Jogador::mostra_territorios_conquistados(){
+	for (int i = 0; i < this->territorios_conquistados.size(); i++) {
+		cout << "\nNome: " << this->territorios_conquistados[i]->get_nome();
+		cout << "\nResistencia: " << this->territorios_conquistados[i]->get_resistencia();
+		cout << "\nProducao de produtos: " << this->territorios_conquistados[i]->get_criacao_produtos();
+		cout << "\nProducao de ouro: " << this->territorios_conquistados[i]->get_criacao_ouro();
+	}
+}
+
+vector<Territorio*>::iterator Imperio_Jogador::encontra_territorio(Territorio* ter){
+	return find(this->territorios_conquistados.begin(), this->territorios_conquistados.end(), *ter);
 }

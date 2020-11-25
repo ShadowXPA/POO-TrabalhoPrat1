@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <random>
 #include <time.h>
+#include <fstream>
 
 class Jogo {
 private:
@@ -20,6 +21,8 @@ private:
 	int pontuacao;
 	void cmd_cria(const string, const int);
 	void cmd_conquista(const string);
+	void cmd_carrega(const string);
+	void cmd_lista(const string);
 public:
 	Jogo();
 	~Jogo();
