@@ -2,7 +2,9 @@
 #include "Ilha.h"
 
 class Pescaria : public Ilha {
-	public:
+public:
 	Pescaria();
 	~Pescaria();
+	void set_criacao_produtos(int) override;
+	void set_criacao_ouro(int) override;
 };

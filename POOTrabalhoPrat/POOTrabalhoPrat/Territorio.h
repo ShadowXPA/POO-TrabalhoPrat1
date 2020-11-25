@@ -3,13 +3,13 @@
 using namespace std;
 
 class Territorio {
-	protected:
+protected:
 	string nome;
 	int pontos_vitoria;
 	int resistencia;
 	int criacao_produtos;
 	int criacao_ouro;
-	public:
+public:
 	Territorio(string, int, int, int, int);
 	~Territorio();
 	string get_nome();

@@ -2,6 +2,4 @@
 
 Duna::Duna() : Continente("Duna", 4, 1, 0) {}
 
-Duna::~Duna()
-{
-}
+Duna::~Duna() {}

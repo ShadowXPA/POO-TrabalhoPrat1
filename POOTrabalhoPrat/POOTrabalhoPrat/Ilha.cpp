@@ -6,6 +6,4 @@ Ilha::Ilha(string nome, int resistencia, int criacao_produtos, int criacao_ouro)
 	this->nome += to_string(s_count);
 }
 
-Ilha::~Ilha()
-{
-}
+Ilha::~Ilha() {}

@@ -1,14 +1,14 @@
 #pragma once
-#include "Territorio.h"
 #include "Territorio_Inicial.h"
 #include "Imperio_Jogador.h"
-#include <vector>
 
 class Mundo {
-	private:
-	vector<Territorio*> territorios;
-	Imperio_Jogador imperio;
-	public:
+private:
+	Imperio_Jogador *imperio;
+	vector<Territorio *> territorios;
+public:
 	Mundo();
 	~Mundo();
+	void adicionar_territorio(Territorio *);
+	void conquistar_territorio(const string);
 };

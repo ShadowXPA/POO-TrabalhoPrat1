@@ -2,7 +2,7 @@
 #include "Territorio.h"
 
 class Ilha : public Territorio {
-	public:
+public:
 	Ilha(string, int, int, int);
 	~Ilha();
 };

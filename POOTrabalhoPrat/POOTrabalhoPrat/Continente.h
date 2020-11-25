@@ -2,7 +2,7 @@
 #include "Territorio.h"
 
 class Continente : public Territorio {
-	public:
+public:
 	Continente(string, int, int, int);
 	~Continente();
 };
