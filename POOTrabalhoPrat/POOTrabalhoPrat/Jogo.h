@@ -19,6 +19,7 @@ private:
 	Mundo *mundo;
 	int turno;
 	int pontuacao;
+	bool jogo_a_correr;
 	void cmd_cria(const string, const int);
 	void cmd_conquista(const string);
 	void cmd_carrega(const string);
@@ -29,6 +30,7 @@ public:
 	float get_ano();
 	int get_turno();
 	int get_fator_sorte();
+	bool get_jogo_a_correr();
 	void ler_cmd(string);
 	void inicia();
 	void conquistar_passar();

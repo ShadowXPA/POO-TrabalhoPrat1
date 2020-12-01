@@ -46,7 +46,7 @@ void Jogo::cmd_lista(const string nome) {
 	if (nome == "") {
 		cout << "Ano: " << this->get_ano();
 		cout << "\nTurno: " << this->get_turno();
-		cout << "\nUltimo fator sorte gerado: " << this->get_fator_sorte();//TODO adicionar o ultimo fator de sorte
+		cout << "\nUltimo fator sorte gerado: " << this->get_fator_sorte();
 		cout << "\n------------------";
 		cout << "\nTerritorios conquistados:";
 		this->mundo->mostra_territorios_imperio();
@@ -60,7 +60,8 @@ void Jogo::cmd_lista(const string nome) {
 		//Evento que vai ocorrer(nome, resumo dos efeitos)
 		//Pontuação final
 	} else {
-
+		// TODO:
+		// listar um territorio
 	}
 }
 
@@ -68,6 +69,7 @@ Jogo::Jogo() {
 	srand((unsigned int) time(nullptr));
 	this->turno = 0;
 	this->pontuacao = 0;
+	this->jogo_a_correr = true;
 	this->mundo = new Mundo();
 	this->mundo->adicionar_territorio_inicial(new Territorio_Inicial());
 }
@@ -89,10 +91,16 @@ int Jogo::get_fator_sorte() {
 	return this->mundo->get_fator_sorte();
 }
 
+bool Jogo::get_jogo_a_correr() {
+	return this->jogo_a_correr;
+}
+
 void Jogo::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
 	auto str = stringSplit(comando, " ");
-	if (str[0].compare("cria") == 0) {
+	if (str[0].compare("sair") == 0) {
+		this->jogo_a_correr = false;
+	} else if (str[0].compare("cria") == 0) {
 		if (str.size() < 3)
 			return;
 		cmd_cria(str[1], stoi(str[2]));
