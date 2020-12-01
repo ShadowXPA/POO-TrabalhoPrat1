@@ -3,6 +3,7 @@
 Territorio::Territorio(string nome, int pontos_vitoria, int resistencia, int criacao_produtos, int criacao_ouro) {
 	this->nome = nome;
 	this->pontos_vitoria = pontos_vitoria;
+	this->resistencia = resistencia;
 	this->criacao_produtos = criacao_produtos;
 	this->criacao_ouro = criacao_ouro;
 }

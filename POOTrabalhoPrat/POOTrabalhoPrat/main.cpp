@@ -10,7 +10,6 @@ int main(int argc, char *argv[], char **envp) {
 
 	jogo->inicia();
 	jogo->ler_cmd("lista");
-	
 
 	// jogo.inicia(); // ler ficheiro
 	// while...

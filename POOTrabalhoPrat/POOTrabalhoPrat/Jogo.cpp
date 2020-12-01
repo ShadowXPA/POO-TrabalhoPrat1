@@ -35,20 +35,22 @@ void Jogo::cmd_carrega(const string nome_fich) {
 	if (File.is_open()) {
 		while (getline(File, Line)) {
 			this->ler_cmd(Line);
-			cout << Line;
+			cout << Line << endl;
 		}
 		File.close();
-	}
-	cout << "Erro ao carregar o ficheiro!\n";
+	} else
+		cout << "Erro ao carregar o ficheiro!\n";
 }
 
-void Jogo::cmd_lista(const string nome){
+void Jogo::cmd_lista(const string nome) {
 	if (nome == "") {
 		cout << "Ano: " << this->get_ano();
 		cout << "\nTurno: " << this->get_turno();
-		cout << "\nUltimo fator sorte gerado: " ;//TODO adicionar o ultimo fator de sorte
+		cout << "\nUltimo fator sorte gerado: " << this->get_fator_sorte();//TODO adicionar o ultimo fator de sorte
+		cout << "\n------------------";
 		cout << "\nTerritorios conquistados:";
 		this->mundo->mostra_territorios_imperio();
+		cout << "\nTerritorios nao conquistados:";
 		this->mundo->mostra_territorios_nao_conquistados();
 		//TODO
 		//Produtos (valor em armazém, valor máximo, produção no turno atual)
@@ -57,18 +59,17 @@ void Jogo::cmd_lista(const string nome){
 		//Tecnologias existentes(nome, preço, resumo do objetivo, adquirida / não adquirida)
 		//Evento que vai ocorrer(nome, resumo dos efeitos)
 		//Pontuação final
-	}
-	else {
+	} else {
 
 	}
 }
 
 Jogo::Jogo() {
-	srand((unsigned int)time(nullptr));
+	srand((unsigned int) time(nullptr));
 	this->turno = 0;
 	this->pontuacao = 0;
 	this->mundo = new Mundo();
-	this->mundo->adicionar_territorio(new Territorio_Inicial());
+	this->mundo->adicionar_territorio_inicial(new Territorio_Inicial());
 }
 
 Jogo::~Jogo() {
@@ -82,6 +83,10 @@ float Jogo::get_ano() {
 
 int Jogo::get_turno() {
 	return this->turno;
+}
+
+int Jogo::get_fator_sorte() {
+	return this->mundo->get_fator_sorte();
 }
 
 void Jogo::ler_cmd(string comando) {
@@ -102,16 +107,26 @@ void Jogo::ler_cmd(string comando) {
 	} else if (str[0].compare("lista") == 0) {
 		if (str.size() < 2)
 			cmd_lista("");
-		cmd_lista(str[1]);
+		else
+			cmd_lista(str[1]);
 	}
 }
 
-void Jogo::inicia()
-{
+void Jogo::inicia() {
 	ler_cmd("carrega Territorios.txt");
 }
 
-vector<string> stringSplit(const string str_to_split, const string delimiter) {
+void Jogo::conquistar_passar() {}
+
+void Jogo::recolha_produtos_ouro() {}
+
+void Jogo::compra_unidades() {}
+
+void Jogo::occorencia_evento() {}
+
+void Jogo::termina_turno() {}
+
+vector<string> Jogo::stringSplit(const string str_to_split, const string delimiter) {
 	vector<string> list;
 	string str(str_to_split);
 	size_t position = 0;

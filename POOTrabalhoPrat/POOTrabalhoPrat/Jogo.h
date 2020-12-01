@@ -28,6 +28,7 @@ public:
 	~Jogo();
 	float get_ano();
 	int get_turno();
+	int get_fator_sorte();
 	void ler_cmd(string);
 	void inicia();
 	void conquistar_passar();

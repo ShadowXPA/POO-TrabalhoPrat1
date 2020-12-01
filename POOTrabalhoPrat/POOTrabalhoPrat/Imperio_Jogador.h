@@ -18,15 +18,18 @@ private:
 	int armazem;
 	int cofre;
 	int forca_militar;
+	int fator_sorte;
 public:
 	Imperio_Jogador();
 	~Imperio_Jogador();
 	int get_armazem();
 	int get_cofre();
 	int get_forca_militar();
+	int get_fator_sorte();
 	size_t tamanho_territorios_conquistados();
 	bool pode_conquistar_ilha();
 	void adicionar_territorio_conquistado(Territorio *);
+	void adicionar_territorio_inicial(Territorio *);
 	void mostra_territorios_conquistados();
-	vector<Territorio*>::iterator encontra_territorio(Territorio *);
+	bool encontra_territorio(Territorio *);
 };

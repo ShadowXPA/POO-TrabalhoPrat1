@@ -5,23 +5,25 @@ Imperio_Jogador::Imperio_Jogador() {
 	this->armazem = 0;
 	this->cofre = 0;
 	this->forca_militar = 0;
+	this->fator_sorte = 0;
 }
 
 Imperio_Jogador::~Imperio_Jogador() {}
 
-int Imperio_Jogador::get_armazem()
-{
+int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
-int Imperio_Jogador::get_cofre()
-{
+int Imperio_Jogador::get_cofre() {
 	return this->cofre;
 }
 
-int Imperio_Jogador::get_forca_militar()
-{
+int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
+}
+
+int Imperio_Jogador::get_fator_sorte() {
+	return this->fator_sorte;
 }
 
 size_t Imperio_Jogador::tamanho_territorios_conquistados() {
@@ -35,10 +37,10 @@ bool Imperio_Jogador::pode_conquistar_ilha() {
 void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	Ilha *il = nullptr;
 	bool pode_conquistar = false;
-	int fator_sorte = (rand() % 6) + 1;
-	fator_sorte += this->forca_militar;
+	this->fator_sorte = (rand() % 6) + 1;
+	this->fator_sorte += this->forca_militar;
 
-	if (fator_sorte >= ter->get_resistencia()) {
+	if (this->fator_sorte >= ter->get_resistencia()) {
 		if (typeid(*ter) != typeid(*il) || (typeid(*ter) == typeid(*il) && this->pode_conquistar_ilha())) {
 			pode_conquistar = true;
 		}
@@ -50,15 +52,25 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	}
 }
 
-void Imperio_Jogador::mostra_territorios_conquistados(){
+void Imperio_Jogador::adicionar_territorio_inicial(Territorio *ter) {
+	this->territorios_conquistados.push_back(ter);
+}
+
+void Imperio_Jogador::mostra_territorios_conquistados() {
 	for (int i = 0; i < this->territorios_conquistados.size(); i++) {
 		cout << "\nNome: " << this->territorios_conquistados[i]->get_nome();
 		cout << "\nResistencia: " << this->territorios_conquistados[i]->get_resistencia();
 		cout << "\nProducao de produtos: " << this->territorios_conquistados[i]->get_criacao_produtos();
 		cout << "\nProducao de ouro: " << this->territorios_conquistados[i]->get_criacao_ouro();
+		cout << "\n------------------";
 	}
 }
 
-vector<Territorio*>::iterator Imperio_Jogador::encontra_territorio(Territorio* ter){
-	return find(this->territorios_conquistados.begin(), this->territorios_conquistados.end(), *ter);
+bool Imperio_Jogador::encontra_territorio(Territorio *ter) {
+	for (int i = 0; i < this->territorios_conquistados.size(); i++) {
+		if (ter == this->territorios_conquistados[i]) {
+			return true;
+		}
+	}
+	return false;
 }
