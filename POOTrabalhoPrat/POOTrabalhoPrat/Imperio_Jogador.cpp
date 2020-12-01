@@ -24,7 +24,7 @@ int Imperio_Jogador::get_forca_militar()
 	return this->forca_militar;
 }
 
-int Imperio_Jogador::tamanho_territorios_conquistados() {
+size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 	return this->territorios_conquistados.size();
 }
 

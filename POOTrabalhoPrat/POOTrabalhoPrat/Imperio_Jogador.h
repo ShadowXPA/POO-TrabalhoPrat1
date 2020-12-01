@@ -24,7 +24,7 @@ public:
 	int get_armazem();
 	int get_cofre();
 	int get_forca_militar();
-	int tamanho_territorios_conquistados();
+	size_t tamanho_territorios_conquistados();
 	bool pode_conquistar_ilha();
 	void adicionar_territorio_conquistado(Territorio *);
 	void mostra_territorios_conquistados();

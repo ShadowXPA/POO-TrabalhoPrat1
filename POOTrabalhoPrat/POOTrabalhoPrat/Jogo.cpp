@@ -3,21 +3,21 @@
 void Jogo::cmd_cria(string tipo, const int n) {
 	transform(tipo.begin(), tipo.end(), tipo.begin(), ::tolower);
 	for (int i = 0; i < n; i++) {
-		if (tipo == "castelo") {
+		if (tipo.compare("castelo") == 0) {
 			this->mundo->adicionar_territorio(new Castelo());
-		} else if (tipo == "duna") {
+		} else if (tipo.compare("duna") == 0) {
 			this->mundo->adicionar_territorio(new Duna());
-		} else if (tipo == "forteleza") {
+		} else if (tipo.compare("forteleza") == 0) {
 			this->mundo->adicionar_territorio(new Fortaleza());
-		} else if (tipo == "mina") {
+		} else if (tipo.compare("mina") == 0) {
 			this->mundo->adicionar_territorio(new Mina());
-		} else if (tipo == "montanha") {
+		} else if (tipo.compare("montanha") == 0) {
 			this->mundo->adicionar_territorio(new Montanha());
-		} else if (tipo == "planicie") {
+		} else if (tipo.compare("planicie") == 0) {
 			this->mundo->adicionar_territorio(new Planicie());
-		} else if (tipo == "pescaria") {
+		} else if (tipo.compare("pescaria") == 0) {
 			this->mundo->adicionar_territorio(new Pescaria());
-		} else if (tipo == "refugiopiratas") {
+		} else if (tipo.compare("refugiopiratas") == 0) {
 			this->mundo->adicionar_territorio(new Refugio_Piratas());
 		} else {
 			break;
@@ -64,7 +64,7 @@ void Jogo::cmd_lista(const string nome){
 }
 
 Jogo::Jogo() {
-	srand(time(nullptr));
+	srand((unsigned int)time(nullptr));
 	this->turno = 0;
 	this->pontuacao = 0;
 	this->mundo = new Mundo();
@@ -87,23 +87,28 @@ int Jogo::get_turno() {
 void Jogo::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
 	auto str = stringSplit(comando, " ");
-	if (str[0] == "cria") {
+	if (str[0].compare("cria") == 0) {
 		if (str.size() < 3)
 			return;
 		cmd_cria(str[1], stoi(str[2]));
-	} else if (str[0] == "conquista") {
+	} else if (str[0].compare("conquista") == 0) {
 		if (str.size() < 2)
 			return;
 		cmd_conquista(str[1]);
-	} else if (str[0] == "carrega") {
+	} else if (str[0].compare("carrega") == 0) {
 		if (str.size() < 2)
 			return;
 		cmd_carrega(str[1]);
-	} else if (str[0] == "lista") {
+	} else if (str[0].compare("lista") == 0) {
 		if (str.size() < 2)
 			cmd_lista("");
 		cmd_lista(str[1]);
 	}
+}
+
+void Jogo::inicia()
+{
+	ler_cmd("carrega Territorios.txt");
 }
 
 vector<string> stringSplit(const string str_to_split, const string delimiter) {

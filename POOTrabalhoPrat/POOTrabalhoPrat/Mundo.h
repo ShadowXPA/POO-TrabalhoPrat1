@@ -10,7 +10,7 @@ public:
 	Mundo();
 	~Mundo();
 	void adicionar_territorio(Territorio *);
-	void conquistar_territorio(const string);
+	void conquistar_territorio(string);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();
 };
