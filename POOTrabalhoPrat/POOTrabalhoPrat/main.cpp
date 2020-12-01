@@ -9,10 +9,15 @@ int main(int argc, char *argv[], char **envp) {
 	Jogo *jogo = new Jogo();
 
 	jogo->inicia();
-	jogo->ler_cmd("lista");
-
+	while (jogo->get_jogo_a_correr()) {
+		string str="";
+		cout << "\nIntroduza o comando que deseja: ";
+		getline(cin, str);
+		jogo->ler_cmd(str);
+	}
 	// jogo.inicia(); // ler ficheiro
 	// while...
+	//fase:
 	// jogo.conquistar_passar();
 	// jogo.recolha_produtos_ouro();
 	// jogo.compra_unidades();

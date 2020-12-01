@@ -35,7 +35,7 @@ bool Imperio_Jogador::pode_conquistar_ilha() {
 }
 
 void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
-	Ilha *il = nullptr;
+	Ilha *il = new Ilha();
 	bool pode_conquistar = false;
 	this->fator_sorte = (rand() % 6) + 1;
 	this->fator_sorte += this->forca_militar;
@@ -50,6 +50,8 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	} else {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
+	delete il;
+	il = nullptr;
 }
 
 void Imperio_Jogador::adicionar_territorio_inicial(Territorio *ter) {

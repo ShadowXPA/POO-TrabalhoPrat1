@@ -1,6 +1,6 @@
 #include "Territorio_Inicial.h"
 
-Territorio_Inicial::Territorio_Inicial() : Territorio("Territorio Inicial", 0, 9, 1, 1) {}
+Territorio_Inicial::Territorio_Inicial() : Territorio("TerritorioInicial", 0, 9, 1, 1) {}
 
 Territorio_Inicial::~Territorio_Inicial() {}
 

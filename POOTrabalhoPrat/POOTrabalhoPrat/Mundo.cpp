@@ -28,15 +28,20 @@ void Mundo::adicionar_territorio(Territorio *ter) {
 }
 
 void Mundo::conquistar_territorio(string nome) {
-	Territorio_Inicial *ti = nullptr;
+	Territorio_Inicial *ti = new Territorio_Inicial();
+	string aux="";
 	for (int i = 0; i < this->territorios.size(); i++) {
-		if (this->territorios[i]->get_nome().compare(nome) == 0) {
+		aux = this->territorios[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (aux.compare(nome) == 0) {
 			if (typeid(this->territorios[i]) != typeid(*ti)) {
 				this->imperio->adicionar_territorio_conquistado(this->territorios[i]);
 			}
 			break;
 		}
 	}
+	delete ti;
+	ti = nullptr;
 }
 
 void Mundo::mostra_territorios_imperio() {
