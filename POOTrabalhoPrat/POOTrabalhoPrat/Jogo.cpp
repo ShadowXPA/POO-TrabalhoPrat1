@@ -60,8 +60,7 @@ void Jogo::cmd_lista(const string nome) {
 		//Evento que vai ocorrer(nome, resumo dos efeitos)
 		//Pontuação final
 	} else {
-		// TODO:
-		// listar um territorio
+		this->mundo->mostra_territorio(nome);
 	}
 }
 

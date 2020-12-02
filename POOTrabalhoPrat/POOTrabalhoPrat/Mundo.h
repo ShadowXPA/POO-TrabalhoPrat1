@@ -15,4 +15,5 @@ public:
 	void conquistar_territorio(string);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();
+	void mostra_territorio(string);
 };
