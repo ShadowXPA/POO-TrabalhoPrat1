@@ -1,14 +1,17 @@
 #include "Imperio_Jogador.h"
 
 Imperio_Jogador::Imperio_Jogador() {
-	this->tecnologias = 0b00000000;
+	this->tecnologias = new Tecnologia();
 	this->armazem = 0;
 	this->cofre = 0;
 	this->forca_militar = 0;
 	this->fator_sorte = 0;
 }
 
-Imperio_Jogador::~Imperio_Jogador() {}
+Imperio_Jogador::~Imperio_Jogador() {
+	delete this->tecnologias;
+	this->tecnologias = nullptr;
+}
 
 int Imperio_Jogador::get_armazem() {
 	return this->armazem;
@@ -31,7 +34,7 @@ size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 }
 
 bool Imperio_Jogador::pode_conquistar_ilha() {
-	return ((this->tamanho_territorios_conquistados() >= 5) && (this->tecnologias & this->MISSEIS_TELEGUIADOS));
+	return ((this->tamanho_territorios_conquistados() >= 5) && (this->tecnologias->get_misseis_teleguiados()));
 }
 
 void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {

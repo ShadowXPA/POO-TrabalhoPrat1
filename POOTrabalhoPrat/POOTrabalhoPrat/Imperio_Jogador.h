@@ -1,5 +1,6 @@
 #pragma once
 #include "Territorio.h"
+#include "Tecnologia.h"
 #include "Ilha.h"
 #include <vector>
 #include <typeinfo>
@@ -8,13 +9,8 @@
 
 class Imperio_Jogador {
 private:
-	const int DRONES_MILITARES = 1;
-	const int MISSEIS_TELEGUIADOS = 2;
-	const int DEFESAS_TERRITORIAIS = 4;
-	const int BOLSA_VALORES = 8;
-	const int BANCO_CENTRAL = 16;
 	vector<Territorio *> territorios_conquistados;
-	int tecnologias;
+	Tecnologia *tecnologias;
 	int armazem;
 	int cofre;
 	int forca_militar;

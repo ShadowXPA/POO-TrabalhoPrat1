@@ -153,6 +153,7 @@
     <ClCompile Include="Pescaria.cpp" />
     <ClCompile Include="Planicie.cpp" />
     <ClCompile Include="Refugio_Piratas.cpp" />
+    <ClCompile Include="Tecnologia.cpp" />
     <ClCompile Include="Territorio.cpp" />
     <ClCompile Include="Territorio_Inicial.cpp" />
   </ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="Pescaria.h" />
     <ClInclude Include="Planicie.h" />
     <ClInclude Include="Refugio_Piratas.h" />
+    <ClInclude Include="Tecnologia.h" />
     <ClInclude Include="Territorio.h" />
     <ClInclude Include="Territorio_Inicial.h" />
   </ItemGroup>
