@@ -8,6 +8,11 @@
 int main(int argc, char *argv[], char **envp) {
 	Jogo *jogo = new Jogo();
 
+	// TODO: Conquistar mesmo território não deve ser possível
+	// Cada tecnologia ser uma class derivada de Tecnologia
+	// Tirar o = nullptr
+	// Retirar typeid, fazer com que cada território "ser_conquistado"
+
 	jogo->inicia();
 	while (jogo->get_jogo_a_correr()) {
 		string str="";
