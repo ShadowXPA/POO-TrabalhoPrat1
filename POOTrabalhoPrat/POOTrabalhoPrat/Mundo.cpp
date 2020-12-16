@@ -29,7 +29,7 @@ void Mundo::adicionar_territorio(Territorio *ter) {
 
 void Mundo::conquistar_territorio(string nome) {
 	Territorio_Inicial *ti = new Territorio_Inicial();
-	string aux="";
+	string aux;
 	for (int i = 0; i < this->territorios.size(); i++) {
 		aux = this->territorios[i]->get_nome();
 		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
@@ -57,6 +57,23 @@ void Mundo::mostra_territorios_nao_conquistados() {
 			cout << "\nProducao de produtos: " << this->territorios[i]->get_criacao_produtos();
 			cout << "\nProducao de ouro: " << this->territorios[i]->get_criacao_ouro();
 			cout << "\n------------------";
+		}
+	}
+}
+
+void Mundo::mostra_territorio(string nome_territorio)
+{
+	string aux;
+	for (int i = 0; i < this->territorios.size(); i++) {
+		aux = this->territorios[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (nome_territorio.compare(aux) == 0) {
+			cout << "\nNome: " << this->territorios[i]->get_nome();
+			cout << "\nPontos de Vitoria: " << this->territorios[i]->get_pontos_vitoria();
+			cout << "\nResistencia: " << this->territorios[i]->get_resistencia();
+			cout << "\nCriacao de Produtos: " << this->territorios[i]->get_criacao_produtos();
+			cout << "\nCriacao de Ouro: " << this->territorios[i]->get_criacao_ouro();
+			break;
 		}
 	}
 }
