@@ -12,6 +12,7 @@ int main(int argc, char *argv[], char **envp) {
 	// Cada tecnologia ser uma class derivada de Tecnologia
 	// Tirar o = nullptr
 	// Retirar typeid, fazer com que cada território "ser_conquistado"
+	//criar uma classe que lide com a interface
 
 	jogo->inicia();
 	while (jogo->get_jogo_a_correr()) {

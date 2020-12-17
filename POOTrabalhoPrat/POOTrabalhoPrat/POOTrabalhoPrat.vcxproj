@@ -145,6 +145,7 @@
     <ClCompile Include="Fortaleza.cpp" />
     <ClCompile Include="Ilha.cpp" />
     <ClCompile Include="Imperio_Jogador.cpp" />
+    <ClCompile Include="Interface_controller.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mina.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Fortaleza.h" />
     <ClInclude Include="Ilha.h" />
     <ClInclude Include="Imperio_Jogador.h" />
+    <ClInclude Include="Interface_controller.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Mina.h" />
     <ClInclude Include="Montanha.h" />
