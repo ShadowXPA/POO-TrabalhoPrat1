@@ -8,11 +8,10 @@
 int main(int argc, char *argv[], char **envp) {
 	Jogo *jogo = new Jogo();
 
-	// TODO: Conquistar mesmo território não deve ser possível
-	// Cada tecnologia ser uma class derivada de Tecnologia
-	// Tirar o = nullptr
+	// TODO
+	// Cada tecnologia ser uma class derivada de Tecnologia -> falta definir as coisas
 	// Retirar typeid, fazer com que cada território "ser_conquistado"
-	//criar uma classe que lide com a interface
+	// Criar uma classe que lide com a interface
 
 	jogo->inicia();
 	while (jogo->get_jogo_a_correr()) {
@@ -32,7 +31,6 @@ int main(int argc, char *argv[], char **envp) {
 	// fim while...
 
 	delete jogo;
-	jogo = nullptr;
 
 	return 0;
 }

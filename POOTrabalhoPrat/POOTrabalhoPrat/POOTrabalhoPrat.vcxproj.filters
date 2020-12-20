@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Jogo\Territorios\Ilha">
       <UniqueIdentifier>{9bb57135-a517-4a92-a24d-7ed958b4d8fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Jogo\Tecnologias">
+      <UniqueIdentifier>{595885b0-2b20-447a-a8ef-b7c9fab328a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jogo\Tecnologias">
+      <UniqueIdentifier>{a101bb5e-78c6-4396-b4c8-101172d24f00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -94,10 +100,25 @@
       <Filter>Source Files\Jogo</Filter>
     </ClCompile>
     <ClCompile Include="Tecnologia.cpp">
-      <Filter>Source Files\Jogo</Filter>
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
     </ClCompile>
-    <ClCompile Include="Interface_controller.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Drones_Militares.cpp">
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
+    </ClCompile>
+    <ClCompile Include="Banco_Central.cpp">
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
+    </ClCompile>
+    <ClCompile Include="Bolsa_Valores.cpp">
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
+    </ClCompile>
+    <ClCompile Include="Defesas_Territoriais.cpp">
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
+    </ClCompile>
+    <ClCompile Include="Misseis_Teleguiados.cpp">
+      <Filter>Source Files\Jogo\Tecnologias</Filter>
+    </ClCompile>
+    <ClCompile Include="Controlador_Interface.cpp">
+      <Filter>Source Files\Jogo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,10 +168,25 @@
       <Filter>Header Files\Jogo</Filter>
     </ClInclude>
     <ClInclude Include="Tecnologia.h">
-      <Filter>Header Files\Jogo</Filter>
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
     </ClInclude>
-    <ClInclude Include="Interface_controller.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Drones_Militares.h">
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
+    </ClInclude>
+    <ClInclude Include="Defesas_Territoriais.h">
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
+    </ClInclude>
+    <ClInclude Include="Banco_Central.h">
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
+    </ClInclude>
+    <ClInclude Include="Bolsa_Valores.h">
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
+    </ClInclude>
+    <ClInclude Include="Misseis_Teleguiados.h">
+      <Filter>Header Files\Jogo\Tecnologias</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlador_Interface.h">
+      <Filter>Header Files\Jogo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,14 +3,16 @@
 Imperio_Jogador::Imperio_Jogador() {
 	this->tecnologias = new Tecnologia();
 	this->armazem = 0;
+	this->max_armazem = 3;
 	this->cofre = 0;
+	this->max_cofre = 3;
 	this->forca_militar = 0;
+	this->max_forca_militar = 3;
 	this->fator_sorte = 0;
 }
 
 Imperio_Jogador::~Imperio_Jogador() {
 	delete this->tecnologias;
-	this->tecnologias = nullptr;
 }
 
 int Imperio_Jogador::get_armazem() {
@@ -42,9 +44,9 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	bool pode_conquistar = false;
 	this->fator_sorte = (rand() % 6) + 1;
 	this->fator_sorte += this->forca_militar;
-
+	
 	if (this->fator_sorte >= ter->get_resistencia()) {
-		if (typeid(*ter) != typeid(*il) || (typeid(*ter) == typeid(*il) && this->pode_conquistar_ilha())) {
+		if (!this->encontra_territorio(ter) && (typeid(*ter) != typeid(*il) || (typeid(*ter) == typeid(*il) && this->pode_conquistar_ilha()))) {
 			pode_conquistar = true;
 		}
 		if (pode_conquistar) {
@@ -54,7 +56,6 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
 	delete il;
-	il = nullptr;
 }
 
 void Imperio_Jogador::adicionar_territorio_inicial(Territorio *ter) {

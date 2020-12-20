@@ -6,10 +6,8 @@ Mundo::Mundo() {
 
 Mundo::~Mundo() {
 	delete this->imperio;
-	this->imperio = nullptr;
 	for (int i = 0; i < this->territorios.size(); i++) {
 		delete this->territorios[i];
-		this->territorios[i] = nullptr;
 	}
 	this->territorios.clear();
 }
@@ -41,7 +39,6 @@ void Mundo::conquistar_territorio(string nome) {
 		}
 	}
 	delete ti;
-	ti = nullptr;
 }
 
 void Mundo::mostra_territorios_imperio() {

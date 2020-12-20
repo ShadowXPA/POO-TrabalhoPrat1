@@ -12,8 +12,12 @@ private:
 	vector<Territorio *> territorios_conquistados;
 	Tecnologia *tecnologias;
 	int armazem;
+	//criar getter e setter para max´s
+	int max_armazem;
 	int cofre;
+	int max_cofre;
 	int forca_militar;
+	int max_forca_militar;
 	int fator_sorte;
 public:
 	Imperio_Jogador();

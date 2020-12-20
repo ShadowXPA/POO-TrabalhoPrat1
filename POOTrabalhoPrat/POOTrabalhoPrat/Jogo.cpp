@@ -75,7 +75,6 @@ Jogo::Jogo() {
 
 Jogo::~Jogo() {
 	delete this->mundo;
-	this->mundo = nullptr;
 }
 
 float Jogo::get_ano() {
