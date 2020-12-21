@@ -1,5 +1,6 @@
 #include "Jogo.h"
 
+/*
 void Jogo::cmd_cria(string tipo, const int n) {
 	transform(tipo.begin(), tipo.end(), tipo.begin(), ::tolower);
 	for (int i = 0; i < n; i++) {
@@ -63,7 +64,7 @@ void Jogo::cmd_lista(const string nome) {
 		this->mundo->mostra_territorio(nome);
 	}
 }
-
+*/
 Jogo::Jogo() {
 	srand((unsigned int) time(nullptr));
 	this->turno = 0;
@@ -77,6 +78,32 @@ Jogo::~Jogo() {
 	delete this->mundo;
 }
 
+void Jogo::adicionar_territorio(Territorio* ter)
+{
+	this->mundo->adicionar_territorio(ter);
+}
+
+void Jogo::conquistar_territorio(string territorio)
+{
+	this->mundo->conquistar_territorio(territorio);
+}
+
+void Jogo::mostra_territorio(string territorio)
+{
+	this->mundo->mostra_territorio(territorio);
+}
+
+void Jogo::mostra_territorios_imperio()
+{
+	this->mundo->mostra_territorios_imperio();
+}
+
+void Jogo::mostra_territorios_nao_conquistados()
+{
+	this->mundo->mostra_territorios_nao_conquistados();
+}
+
+
 float Jogo::get_ano() {
 	return turno / 6.0f;
 }
@@ -89,10 +116,10 @@ int Jogo::get_fator_sorte() {
 	return this->mundo->get_fator_sorte();
 }
 
-bool Jogo::get_jogo_a_correr() {
+bool& Jogo::get_jogo_a_correr() {
 	return this->jogo_a_correr;
 }
-
+/*
 void Jogo::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
 	auto str = stringSplit(comando, " ");
@@ -144,4 +171,4 @@ vector<string> Jogo::stringSplit(const string str_to_split, const string delimit
 	}
 	list.push_back(str);
 	return list;
-}
+}*/

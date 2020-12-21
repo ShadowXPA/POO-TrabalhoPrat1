@@ -4,22 +4,23 @@
 #include <vector>
 
 #include "Jogo.h"
+#include "Controlador_Interface.h"
 
 int main(int argc, char *argv[], char **envp) {
-	Jogo *jogo = new Jogo();
-
+	//Jogo *jogo = new Jogo();
+	Controlador_Interface *controlador_interface = new Controlador_Interface();
 	// TODO
-	// Cada tecnologia ser uma class derivada de Tecnologia -> falta definir as coisas
+	// Tecnologias -> fazer a parte do comprar
 	// Retirar typeid, fazer com que cada território "ser_conquistado"
-	// Criar uma classe que lide com a interface
+	controlador_interface->inicia();
 
-	jogo->inicia();
-	while (jogo->get_jogo_a_correr()) {
+	//jogo->inicia();
+	/*while (jogo->get_jogo_a_correr()) {
 		string str="";
 		cout << "\nIntroduza o comando que deseja: ";
 		getline(cin, str);
 		jogo->ler_cmd(str);
-	}
+	}*/
 	// jogo.inicia(); // ler ficheiro
 	// while...
 	//fase:
@@ -30,7 +31,6 @@ int main(int argc, char *argv[], char **envp) {
 	// jogo.termina_turno();
 	// fim while...
 
-	delete jogo;
-
+	delete controlador_interface;
 	return 0;
 }
