@@ -1,1 +1,9 @@
 #include "Drones_Militares.h"
+
+Drones_Militares::Drones_Militares() : Tecnologia("Drones Militares", "Esta tecnologia faz passar o limite maximo da forca militar para cinco.", 3) {}
+
+Drones_Militares::~Drones_Militares() {}
+
+bool Drones_Militares::comprar(Imperio_Jogador &imp) {
+	return Tecnologia::comprar(imp);
+}

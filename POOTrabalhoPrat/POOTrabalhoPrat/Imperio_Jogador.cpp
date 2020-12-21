@@ -23,6 +23,12 @@ int Imperio_Jogador::get_cofre() {
 	return this->cofre;
 }
 
+void Imperio_Jogador::decrementar_cofre(int i) {
+	this->cofre -= i;
+	if (this->cofre < 0)
+		this->cofre = 0;
+}
+
 int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
 }

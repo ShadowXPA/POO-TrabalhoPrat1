@@ -24,6 +24,7 @@ public:
 	~Imperio_Jogador();
 	int get_armazem();
 	int get_cofre();
+	void decrementar_cofre(int);
 	int get_forca_militar();
 	int get_fator_sorte();
 	size_t tamanho_territorios_conquistados();
