@@ -69,6 +69,7 @@ Jogo::Jogo() {
 	srand((unsigned int) time(nullptr));
 	this->turno = 0;
 	this->pontuacao = 0;
+	this->fase = 0;
 	this->jogo_a_correr = true;
 	this->mundo = new Mundo();
 	this->mundo->adicionar_territorio_inicial(new Territorio_Inicial());
@@ -76,6 +77,11 @@ Jogo::Jogo() {
 
 Jogo::~Jogo() {
 	delete this->mundo;
+}
+
+Mundo* const Jogo::get_mundo()
+{
+	return this->mundo;
 }
 
 void Jogo::adicionar_territorio(Territorio* ter)
@@ -103,7 +109,6 @@ void Jogo::mostra_territorios_nao_conquistados()
 	this->mundo->mostra_territorios_nao_conquistados();
 }
 
-
 float Jogo::get_ano() {
 	return turno / 6.0f;
 }
@@ -119,6 +124,23 @@ int Jogo::get_fator_sorte() {
 bool& Jogo::get_jogo_a_correr() {
 	return this->jogo_a_correr;
 }
+
+void Jogo::incrementa_fase()
+{
+	this->fase = ++this->fase%5;
+}
+
+void Jogo::conquistar_passar() {}
+
+void Jogo::recolha_produtos_ouro() {}
+
+void Jogo::compra_unidades() {}
+
+void Jogo::occorencia_evento() {}
+
+void Jogo::termina_turno() {}
+
+
 /*
 void Jogo::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
@@ -149,15 +171,6 @@ void Jogo::inicia() {
 	ler_cmd("carrega Territorios.txt");
 }
 
-void Jogo::conquistar_passar() {}
-
-void Jogo::recolha_produtos_ouro() {}
-
-void Jogo::compra_unidades() {}
-
-void Jogo::occorencia_evento() {}
-
-void Jogo::termina_turno() {}
 
 vector<string> Jogo::stringSplit(const string str_to_split, const string delimiter) {
 	vector<string> list;

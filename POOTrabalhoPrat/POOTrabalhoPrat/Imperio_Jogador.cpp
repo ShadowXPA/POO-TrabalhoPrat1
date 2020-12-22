@@ -19,8 +19,28 @@ int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
+bool Imperio_Jogador::maisprod()
+{
+	if (this->cofre >= 2 && this->armazem < this->max_armazem) {
+		this->armazem++;
+		this->cofre -= 2;
+		return true;
+	}
+	return false;
+}
+
 int Imperio_Jogador::get_cofre() {
 	return this->cofre;
+}
+
+bool Imperio_Jogador::maisouro()
+{
+	if (this->armazem >= 2 && this->cofre < this->max_cofre) {
+		this->cofre++;
+		this->armazem -= 2;
+		return true;
+	}
+	return false;
 }
 
 void Imperio_Jogador::decrementar_cofre(int i) {
@@ -31,6 +51,16 @@ void Imperio_Jogador::decrementar_cofre(int i) {
 
 int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
+}
+
+bool Imperio_Jogador::maismilitar()
+{
+	if (this->armazem >= 1 && this->cofre >= 1 && this->forca_militar < this->max_forca_militar) {
+		this->forca_militar++;
+		this->armazem--;
+		this->cofre--;
+	}
+	return false;
 }
 
 int Imperio_Jogador::get_fator_sorte() {

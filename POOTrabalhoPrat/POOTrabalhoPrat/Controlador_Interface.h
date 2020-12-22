@@ -12,13 +12,12 @@ public:
 	void cmd_conquista(const string);
 	void cmd_carrega(const string);
 	void cmd_lista(const string);
+	void cmd_passa();
+	void cmd_maisouro();
+	void cmd_maisprod();
+	void cmd_maismilitar();
 	void ler_cmd(string);
 	void inicia();
-	void conquistar_passar();
-	void recolha_produtos_ouro();
-	void compra_unidades();
-	void occorencia_evento();
-	void termina_turno();
 	vector<string> stringSplit(const string str_to_split, const string delimiter);
 };
 

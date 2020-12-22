@@ -12,6 +12,11 @@ Mundo::~Mundo() {
 	this->territorios.clear();
 }
 
+Imperio_Jogador* const Mundo::get_imperio()
+{
+	return this->imperio;
+}
+
 int Mundo::get_fator_sorte() {
 	return this->imperio->get_fator_sorte();
 }

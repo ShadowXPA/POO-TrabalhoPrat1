@@ -84,6 +84,38 @@ void Controlador_Interface::cmd_lista(const string nome) {
 	}
 }
 
+void Controlador_Interface::cmd_passa(){
+	this->jogo->incrementa_fase();
+}
+
+void Controlador_Interface::cmd_maisouro(){
+	if (this->jogo->get_mundo()->get_imperio()->maisouro()) {
+		cout << "Comando maisouro efetuado com sucesso!";
+	}
+	else{
+		cout << "\nImpossivel obter mais ouro pois nao tem pelo menos 2 produtos!\n";
+	}
+}
+
+void Controlador_Interface::cmd_maisprod(){
+	if (this->jogo->get_mundo()->get_imperio()->maisprod()) {
+		cout << "Comando maisprod efetuado com sucesso!";
+	}
+	else {
+		cout << "\nImpossivel obter mais ouro pois nao tem pelo menos 2 produtos!\n";
+	}
+}
+
+void Controlador_Interface::cmd_maismilitar()
+{
+	if (this->jogo->get_mundo()->get_imperio()->maisprod()) {
+		cout << "Comando maisprod efetuado com sucesso!";
+	}
+	else {
+		cout << "\nImpossivel obter mais ouro pois nao tem pelo menos 2 produtos!\n";
+	}
+}
+
 void Controlador_Interface::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
 	auto str = stringSplit(comando, " ");
@@ -111,10 +143,46 @@ void Controlador_Interface::ler_cmd(string comando) {
 		else
 			cmd_lista(str[1]);
 	}
+	else if (str[0].compare("passa") == 0) {
+		cmd_passa();
+	}
+	else if (str[0].compare("maisouro") == 0) {
+		
+	}
+	else if (str[0].compare("maisprod") == 0) {
+
+	}
+	else if (str[0].compare("maismilitar") == 0) {
+
+	}
+	else if (str[0].compare("adquire") == 0) {
+
+	}
+	else if (str[0].compare("avanca") == 0) {
+
+	}
+	else if (str[0].compare("grava") == 0) {
+
+	}
+	else if (str[0].compare("ativa") == 0) {
+
+	}
+	else if (str[0].compare("apaga") == 0) {
+
+	}
+	else if (str[0].compare("toma") == 0) {
+
+	}
+	else if (str[0].compare("modifica") == 0) {
+
+	}
+	else if (str[0].compare("fevento") == 0) {
+
+	}
 }
 
 void Controlador_Interface::inicia() {
-	ler_cmd("carrega Territorios.txt");
+	this->ler_cmd("carrega Territorios.txt");
 	while (this->jogo->get_jogo_a_correr()) {
 		string str = "";
 		cout << "\nIntroduza o comando que deseja: ";
@@ -123,15 +191,7 @@ void Controlador_Interface::inicia() {
 	}
 }
 
-void Controlador_Interface::conquistar_passar() {}
 
-void Controlador_Interface::recolha_produtos_ouro() {}
-
-void Controlador_Interface::compra_unidades() {}
-
-void Controlador_Interface::occorencia_evento() {}
-
-void Controlador_Interface::termina_turno() {}
 
 vector<string> Controlador_Interface::stringSplit(const string str_to_split, const string delimiter) {
 	vector<string> list;
