@@ -6,11 +6,11 @@
 #include "Controlador_Interface.h"
 
 int main(int argc, char *argv[], char **envp) {
-	//Jogo *jogo = new Jogo();
 	Controlador_Interface *controlador_interface = new Controlador_Interface();
 	// TODO
 	// Tecnologias -> fazer a parte do comprar
 	// Retirar typeid, fazer com que cada território "ser_conquistado"
+	// Falta mudar para getMundo() e getImperio()
 	controlador_interface->inicia();
 
 	//jogo->inicia();
