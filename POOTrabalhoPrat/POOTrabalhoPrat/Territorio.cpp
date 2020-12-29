@@ -1,5 +1,7 @@
 #include "Territorio.h"
 
+using namespace std;
+
 Territorio::Territorio(string nome, int pontos_vitoria, int resistencia, int criacao_produtos, int criacao_ouro) {
 	this->nome = nome;
 	this->pontos_vitoria = pontos_vitoria;

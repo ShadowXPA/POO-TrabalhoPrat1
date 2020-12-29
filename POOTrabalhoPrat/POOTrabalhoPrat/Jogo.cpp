@@ -1,5 +1,7 @@
 #include "Jogo.h"
 
+using namespace std;
+
 /*
 void Jogo::cmd_cria(string tipo, const int n) {
 	transform(tipo.begin(), tipo.end(), tipo.begin(), ::tolower);

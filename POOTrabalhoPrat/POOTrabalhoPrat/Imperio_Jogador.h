@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Territorio.h"
+#include "Territorio_Inicial.h"
 #include "Tecnologia.h"
 #include "Ilha.h"
 #include <vector>
@@ -9,8 +11,8 @@
 
 class Imperio_Jogador {
 private:
-	vector<Territorio *> territorios_conquistados;
-	Tecnologia *tecnologias;
+	std::vector<Territorio *> territorios_conquistados;
+	std::vector<Tecnologia *> tecnologias;
 	int armazem;
 	//criar getter e setter para max´s
 	int max_armazem;
@@ -27,10 +29,11 @@ public:
 	void decrementar_cofre(int);
 	int get_forca_militar();
 	int get_fator_sorte();
+	int gerar_fator_sorte(int = 1, int = 6);
 	size_t tamanho_territorios_conquistados();
 	bool pode_conquistar_ilha();
 	void adicionar_territorio_conquistado(Territorio *);
-	void adicionar_territorio_inicial(Territorio *);
+	void adicionar_territorio_inicial(Territorio_Inicial *);
 	void mostra_territorios_conquistados();
 	bool encontra_territorio(Territorio *);
 };

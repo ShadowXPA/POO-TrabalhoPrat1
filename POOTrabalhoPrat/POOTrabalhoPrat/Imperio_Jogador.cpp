@@ -1,7 +1,8 @@
 #include "Imperio_Jogador.h"
 
+using namespace std;
+
 Imperio_Jogador::Imperio_Jogador() {
-	this->tecnologias = new Tecnologia();
 	this->armazem = 0;
 	this->max_armazem = 3;
 	this->cofre = 0;
@@ -12,7 +13,9 @@ Imperio_Jogador::Imperio_Jogador() {
 }
 
 Imperio_Jogador::~Imperio_Jogador() {
-	delete this->tecnologias;
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		delete this->tecnologias[i];
+	}
 }
 
 int Imperio_Jogador::get_armazem() {
@@ -37,22 +40,26 @@ int Imperio_Jogador::get_fator_sorte() {
 	return this->fator_sorte;
 }
 
+int Imperio_Jogador::gerar_fator_sorte(int min, int max) {
+	return (rand() % max) + min;
+}
+
 size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 	return this->territorios_conquistados.size();
 }
 
 bool Imperio_Jogador::pode_conquistar_ilha() {
-	return ((this->tamanho_territorios_conquistados() >= 5) && (this->tecnologias->get_misseis_teleguiados()));
+	return ((this->tamanho_territorios_conquistados() >= 5));
 }
 
 void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
-	Ilha *il = new Ilha();
+	// TODO arranjar isto
 	bool pode_conquistar = false;
-	this->fator_sorte = (rand() % 6) + 1;
+	this->fator_sorte = this->gerar_fator_sorte();
 	this->fator_sorte += this->forca_militar;
-	
+
 	if (this->fator_sorte >= ter->get_resistencia()) {
-		if (!this->encontra_territorio(ter) && (typeid(*ter) != typeid(*il) || (typeid(*ter) == typeid(*il) && this->pode_conquistar_ilha()))) {
+		if (!this->encontra_territorio(ter) && (this->pode_conquistar_ilha())) {
 			pode_conquistar = true;
 		}
 		if (pode_conquistar) {
@@ -61,10 +68,9 @@ void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	} else {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
-	delete il;
 }
 
-void Imperio_Jogador::adicionar_territorio_inicial(Territorio *ter) {
+void Imperio_Jogador::adicionar_territorio_inicial(Territorio_Inicial *ter) {
 	this->territorios_conquistados.push_back(ter);
 }
 

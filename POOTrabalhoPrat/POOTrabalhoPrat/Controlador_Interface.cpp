@@ -1,5 +1,7 @@
 #include "Controlador_Interface.h"
 
+using namespace std;
+
 Controlador_Interface::Controlador_Interface()
 {
 	this->jogo = new Jogo();

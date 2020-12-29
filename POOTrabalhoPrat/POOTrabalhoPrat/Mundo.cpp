@@ -1,5 +1,7 @@
 #include "Mundo.h"
 
+using namespace std;
+
 Mundo::Mundo() {
 	this->imperio = new Imperio_Jogador();
 }
@@ -9,14 +11,13 @@ Mundo::~Mundo() {
 	for (int i = 0; i < this->territorios.size(); i++) {
 		delete this->territorios[i];
 	}
-	this->territorios.clear();
 }
 
 int Mundo::get_fator_sorte() {
 	return this->imperio->get_fator_sorte();
 }
 
-void Mundo::adicionar_territorio_inicial(Territorio *ter) {
+void Mundo::adicionar_territorio_inicial(Territorio_Inicial *ter) {
 	this->imperio->adicionar_territorio_inicial(ter);
 	this->adicionar_territorio(ter);
 }

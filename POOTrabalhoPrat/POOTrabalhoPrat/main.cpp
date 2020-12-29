@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 
-#include "Jogo.h"
 #include "Controlador_Interface.h"
 
 int main(int argc, char *argv[], char **envp) {
