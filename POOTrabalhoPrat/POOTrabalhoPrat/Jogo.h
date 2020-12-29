@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Mundo.h"
 #include "Castelo.h"
 #include "Duna.h"
@@ -28,16 +29,16 @@ private:
 public:
 	Jogo();
 	~Jogo();
-	Mundo* const get_mundo();
-	void adicionar_territorio(Territorio* ter);
+	Mundo *const get_mundo();
+	void adicionar_territorio(Territorio *ter);
 	void conquistar_territorio(string territorio);
-	void mostra_territorio(string territorio);
+	void mostra_territorio(std::string territorio);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();
 	float get_ano();
 	int get_turno();
 	int get_fator_sorte();
-	bool& get_jogo_a_correr();
+	bool &get_jogo_a_correr();
 	void incrementa_fase();
 	/*void ler_cmd(string);
 	void inicia();*/

@@ -81,33 +81,27 @@ Jogo::~Jogo() {
 	delete this->mundo;
 }
 
-Mundo* const Jogo::get_mundo()
-{
+Mundo *const Jogo::get_mundo() {
 	return this->mundo;
 }
 
-void Jogo::adicionar_territorio(Territorio* ter)
-{
+void Jogo::adicionar_territorio(Territorio *ter) {
 	this->mundo->adicionar_territorio(ter);
 }
 
-void Jogo::conquistar_territorio(string territorio)
-{
+void Jogo::conquistar_territorio(string territorio) {
 	this->mundo->conquistar_territorio(territorio);
 }
 
-void Jogo::mostra_territorio(string territorio)
-{
+void Jogo::mostra_territorio(string territorio) {
 	this->mundo->mostra_territorio(territorio);
 }
 
-void Jogo::mostra_territorios_imperio()
-{
+void Jogo::mostra_territorios_imperio() {
 	this->mundo->mostra_territorios_imperio();
 }
 
-void Jogo::mostra_territorios_nao_conquistados()
-{
+void Jogo::mostra_territorios_nao_conquistados() {
 	this->mundo->mostra_territorios_nao_conquistados();
 }
 
@@ -123,13 +117,12 @@ int Jogo::get_fator_sorte() {
 	return this->mundo->get_fator_sorte();
 }
 
-bool& Jogo::get_jogo_a_correr() {
+bool &Jogo::get_jogo_a_correr() {
 	return this->jogo_a_correr;
 }
 
-void Jogo::incrementa_fase()
-{
-	this->fase = ++this->fase%5;
+void Jogo::incrementa_fase() {
+	this->fase = ++this->fase % 5;
 }
 
 void Jogo::conquistar_passar() {}
