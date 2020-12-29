@@ -31,12 +31,13 @@ public:
 	~Jogo();
 	Mundo *const get_mundo();
 	void adicionar_territorio(Territorio *ter);
-	void conquistar_territorio(string territorio);
+	void conquistar_territorio(std::string territorio);
 	void mostra_territorio(std::string territorio);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();
 	float get_ano();
 	int get_turno();
+	int get_fase();
 	int get_fator_sorte();
 	bool &get_jogo_a_correr();
 	void incrementa_fase();

@@ -16,8 +16,16 @@ public:
 	void cmd_maisouro();
 	void cmd_maisprod();
 	void cmd_maismilitar();
+	void cmd_adquire();
+	void cmd_avanca();
+	void cmd_grava();
+	void cmd_ativa();
+	void cmd_apaga();
+	void cmd_toma();
+	void cmd_modifica();
+	void cmd_fevento();
 	void ler_cmd(std::string);
 	void inicia();
-	std::vector<string> stringSplit(const std::string str_to_split, const std::string delimiter);
+	std::vector<std::string> stringSplit(const std::string str_to_split, const std::string delimiter);
 };
 

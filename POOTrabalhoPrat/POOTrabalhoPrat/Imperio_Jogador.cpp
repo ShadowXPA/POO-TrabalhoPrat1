@@ -62,6 +62,7 @@ bool Imperio_Jogador::maismilitar()
 		this->forca_militar++;
 		this->armazem--;
 		this->cofre--;
+		return true;
 	}
 	return false;
 }
