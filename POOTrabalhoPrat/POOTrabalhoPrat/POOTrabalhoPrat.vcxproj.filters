@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Jogo\Tecnologias">
       <UniqueIdentifier>{a101bb5e-78c6-4396-b4c8-101172d24f00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Jogo\Evento">
+      <UniqueIdentifier>{be1ba262-c1fe-4ab7-a28d-abbd3bf398c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jogo\Evento">
+      <UniqueIdentifier>{5e95f951-95f0-4743-b294-59ee213c19de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -120,6 +126,18 @@
     <ClCompile Include="Controlador_Interface.cpp">
       <Filter>Source Files\Jogo</Filter>
     </ClCompile>
+    <ClCompile Include="Evento.cpp">
+      <Filter>Source Files\Jogo\Evento</Filter>
+    </ClCompile>
+    <ClCompile Include="Recurso_Abandonado.cpp">
+      <Filter>Source Files\Jogo\Evento</Filter>
+    </ClCompile>
+    <ClCompile Include="Invasao.cpp">
+      <Filter>Source Files\Jogo\Evento</Filter>
+    </ClCompile>
+    <ClCompile Include="Alianca_Diplomatica.cpp">
+      <Filter>Source Files\Jogo\Evento</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Territorio_Inicial.h">
@@ -187,6 +205,18 @@
     </ClInclude>
     <ClInclude Include="Controlador_Interface.h">
       <Filter>Header Files\Jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="Evento.h">
+      <Filter>Header Files\Jogo\Evento</Filter>
+    </ClInclude>
+    <ClInclude Include="Recurso_Abandonado.h">
+      <Filter>Header Files\Jogo\Evento</Filter>
+    </ClInclude>
+    <ClInclude Include="Invasao.h">
+      <Filter>Header Files\Jogo\Evento</Filter>
+    </ClInclude>
+    <ClInclude Include="Alianca_Diplomatica.h">
+      <Filter>Header Files\Jogo\Evento</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

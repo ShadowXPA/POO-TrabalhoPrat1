@@ -36,8 +36,11 @@ void Controlador_Interface::cmd_cria(string tipo, const int n) {
 }
 
 void Controlador_Interface::cmd_conquista(const string nome) {
-	// TODO mostrar resultado
-	this->jogo->conquistar_territorio(nome);
+	if (this->jogo->conquistar_territorio(nome)) {
+		cout << "\nComando conquista efetuado com sucesso!\n";
+	} else {
+		cout << "\nImpossivel aquirir o territorio que desejava!\n";
+	}
 }
 
 void Controlador_Interface::cmd_carrega(const string nome_fich) {
@@ -81,7 +84,7 @@ void Controlador_Interface::cmd_passa() {
 
 void Controlador_Interface::cmd_maisouro() {
 	if (this->jogo->get_mundo()->get_imperio()->maisouro()) {
-		cout << "Comando maisouro efetuado com sucesso!";
+		cout << "\nComando maisouro efetuado com sucesso!\n";
 	} else {
 		cout << "\nImpossivel obter mais ouro pois nao tem pelo menos 2 produtos!\n";
 	}
@@ -89,7 +92,7 @@ void Controlador_Interface::cmd_maisouro() {
 
 void Controlador_Interface::cmd_maisprod() {
 	if (this->jogo->get_mundo()->get_imperio()->maisprod()) {
-		cout << "Comando maisprod efetuado com sucesso!";
+		cout << "\nComando maisprod efetuado com sucesso!\n";
 	} else {
 		cout << "\nImpossivel obter mais produtos pois nao tem pelo menos 2 ouro!\n";
 	}
@@ -97,50 +100,36 @@ void Controlador_Interface::cmd_maisprod() {
 
 void Controlador_Interface::cmd_maismilitar() {
 	if (this->jogo->get_mundo()->get_imperio()->maismilitar()) {
-		cout << "Comando maismilitar efetuado com sucesso!";
+		cout << "\nComando maismilitar efetuado com sucesso!\n";
 	} else {
 		cout << "\nImpossivel obter mais militar pois nao tem pelo menos 1 ouro e 1 produto!\n";
 	}
 }
 
 void Controlador_Interface::cmd_adquire(const string tipo) {
-		bool adquirido = this->jogo->get_mundo()->get_imperio()->pode_adquirir(tipo);
-		//TODO
-		if (adquirido) {
-			cout << "Comando aquire efetuado com sucesso!";
-		}
-		else {
-			cout << "\nImpossivel aquirir a tecnologia que desejava!\n";
-		}
+	if (this->jogo->get_mundo()->get_imperio()->pode_adquirir(tipo)) {
+		cout << "\nComando aquire efetuado com sucesso!\n";
+	} else {
+		cout << "\nImpossivel aquirir a tecnologia que desejava!\n";
+	}
 }
 
 void Controlador_Interface::cmd_avanca() {
 	this->jogo->incrementa_fase();
+	// TODO verificar a fase e executar fases automáticas (exemplo: fase de eventos)
 }
 
-void Controlador_Interface::cmd_grava(const std::string)
-{
-}
+void Controlador_Interface::cmd_grava(const std::string) {}
 
-void Controlador_Interface::cmd_ativa(const std::string)
-{
-}
+void Controlador_Interface::cmd_ativa(const std::string) {}
 
-void Controlador_Interface::cmd_apaga(const std::string)
-{
-}
+void Controlador_Interface::cmd_apaga(const std::string) {}
 
-void Controlador_Interface::cmd_toma(const std::string, const std::string)
-{
-}
+void Controlador_Interface::cmd_toma(const std::string, const std::string) {}
 
-void Controlador_Interface::cmd_modifica(const std::string, const int)
-{
-}
+void Controlador_Interface::cmd_modifica(const std::string, const int) {}
 
-void Controlador_Interface::cmd_fevento(const std::string)
-{
-}
+void Controlador_Interface::cmd_fevento(const std::string) {}
 
 void Controlador_Interface::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);

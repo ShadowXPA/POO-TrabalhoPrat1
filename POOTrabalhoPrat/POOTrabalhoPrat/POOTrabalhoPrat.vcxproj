@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alianca_Diplomatica.cpp" />
     <ClCompile Include="Banco_Central.cpp" />
     <ClCompile Include="Bolsa_Valores.cpp" />
     <ClCompile Include="Castelo.cpp" />
@@ -146,10 +147,12 @@
     <ClCompile Include="Defesas_Territoriais.cpp" />
     <ClCompile Include="Drones_Militares.cpp" />
     <ClCompile Include="Duna.cpp" />
+    <ClCompile Include="Evento.cpp" />
     <ClCompile Include="Fortaleza.cpp" />
     <ClCompile Include="Ilha.cpp" />
     <ClCompile Include="Imperio_Jogador.cpp" />
     <ClCompile Include="Controlador_Interface.cpp" />
+    <ClCompile Include="Invasao.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mina.cpp" />
@@ -158,12 +161,14 @@
     <ClCompile Include="Mundo.cpp" />
     <ClCompile Include="Pescaria.cpp" />
     <ClCompile Include="Planicie.cpp" />
+    <ClCompile Include="Recurso_Abandonado.cpp" />
     <ClCompile Include="Refugio_Piratas.cpp" />
     <ClCompile Include="Tecnologia.cpp" />
     <ClCompile Include="Territorio.cpp" />
     <ClCompile Include="Territorio_Inicial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alianca_Diplomatica.h" />
     <ClInclude Include="Banco_Central.h" />
     <ClInclude Include="Bolsa_Valores.h" />
     <ClInclude Include="Castelo.h" />
@@ -171,10 +176,12 @@
     <ClInclude Include="Defesas_Territoriais.h" />
     <ClInclude Include="Drones_Militares.h" />
     <ClInclude Include="Duna.h" />
+    <ClInclude Include="Evento.h" />
     <ClInclude Include="Fortaleza.h" />
     <ClInclude Include="Ilha.h" />
     <ClInclude Include="Imperio_Jogador.h" />
     <ClInclude Include="Controlador_Interface.h" />
+    <ClInclude Include="Invasao.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Mina.h" />
     <ClInclude Include="Misseis_Teleguiados.h" />
@@ -182,6 +189,7 @@
     <ClInclude Include="Mundo.h" />
     <ClInclude Include="Pescaria.h" />
     <ClInclude Include="Planicie.h" />
+    <ClInclude Include="Recurso_Abandonado.h" />
     <ClInclude Include="Refugio_Piratas.h" />
     <ClInclude Include="Tecnologia.h" />
     <ClInclude Include="Territorio.h" />
