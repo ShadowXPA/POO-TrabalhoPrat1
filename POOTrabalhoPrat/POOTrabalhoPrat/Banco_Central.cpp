@@ -5,5 +5,9 @@ Banco_Central::Banco_Central() : Tecnologia("BancoCentral", "Esta tecnologia per
 Banco_Central::~Banco_Central() {}
 
 bool Banco_Central::comprar(Imperio_Jogador &imp) {
-	return Tecnologia::comprar(imp);
+	if (Tecnologia::comprar(imp)) {
+		imp.set_armazem_cofre();
+		return true;
+	}
+	return false;
 }

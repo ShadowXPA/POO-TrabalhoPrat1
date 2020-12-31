@@ -7,7 +7,6 @@ Invasao::Invasao() : Evento("Invasao", "Um outro imperio concorrente esta a tent
 Invasao::~Invasao() {}
 
 void Invasao::efeito(Imperio_Jogador *const imp, const int ano) {
-	// TODO
 	Evento::efeito(imp, ano);
 	int fator_sorte = imp->gerar_fator_sorte();
 	fator_sorte += ano == 2 ? 2 : 3;

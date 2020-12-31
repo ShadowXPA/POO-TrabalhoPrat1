@@ -19,7 +19,6 @@ private:
 	std::vector<Territorio *> territorios_conquistados;
 	std::vector<Tecnologia *> tecnologias;
 	int armazem;
-	//criar getter e setter para max´s
 	int max_armazem;
 	int cofre;
 	int max_cofre;
@@ -29,14 +28,18 @@ private:
 public:
 	Imperio_Jogador();
 	~Imperio_Jogador();
+	void set_armazem_cofre();
 	int get_armazem();
+	void set_armazem();
 	bool maisprod();
 	bool incrementa_armazem(int = 1);
 	int get_cofre();
+	void set_cofre();
 	bool maisouro();
 	bool incrementa_cofre(int = 1);
 	void decrementar_cofre(int);
 	int get_forca_militar();
+	void set_forca_militar();
 	bool maismilitar();
 	bool incrementa_militar(int = 1);
 	int get_fator_sorte();

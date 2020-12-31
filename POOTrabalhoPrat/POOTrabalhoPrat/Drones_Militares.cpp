@@ -5,5 +5,9 @@ Drones_Militares::Drones_Militares() : Tecnologia("DronesMilitares", "Esta tecno
 Drones_Militares::~Drones_Militares() {}
 
 bool Drones_Militares::comprar(Imperio_Jogador &imp) {
-	return Tecnologia::comprar(imp);
+	if (Tecnologia::comprar(imp)) {
+		imp.set_forca_militar();
+		return true;
+	}
+	return false;
 }

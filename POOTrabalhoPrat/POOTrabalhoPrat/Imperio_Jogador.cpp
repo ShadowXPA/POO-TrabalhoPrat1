@@ -23,12 +23,22 @@ Imperio_Jogador::~Imperio_Jogador() {
 	}
 }
 
+void Imperio_Jogador::set_armazem_cofre() {
+	this->set_armazem();
+	this->set_cofre();
+}
+
 int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
+void Imperio_Jogador::set_armazem() {
+	if (this->adquiriu_tecnologia("bancocentral"))
+		this->max_armazem = 5;
+}
+
 bool Imperio_Jogador::maisprod() {
-	if (this->cofre >= 2 && incrementa_armazem()) {
+	if (this->adquiriu_tecnologia("bolsavalores") && this->cofre >= 2 && this->incrementa_armazem()) {
 		this->cofre -= 2;
 		return true;
 	}
@@ -47,8 +57,13 @@ int Imperio_Jogador::get_cofre() {
 	return this->cofre;
 }
 
+void Imperio_Jogador::set_cofre() {
+	if (this->adquiriu_tecnologia("bancocentral"))
+		this->max_cofre = 5;
+}
+
 bool Imperio_Jogador::maisouro() {
-	if (this->armazem >= 2 && incrementa_cofre()) {
+	if (this->adquiriu_tecnologia("bolsavalores") && this->armazem >= 2 && this->incrementa_cofre()) {
 		this->armazem -= 2;
 		return true;
 	}
@@ -73,8 +88,13 @@ int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
 }
 
+void Imperio_Jogador::set_forca_militar() {
+	if (this->adquiriu_tecnologia("dronesmilitares"))
+		this->max_forca_militar = 5;
+}
+
 bool Imperio_Jogador::maismilitar() {
-	if (this->armazem >= 1 && this->cofre >= 1 && incrementa_militar()) {
+	if (this->armazem >= 1 && this->cofre >= 1 && this->incrementa_militar()) {
 		this->armazem--;
 		this->cofre--;
 		return true;
@@ -103,8 +123,7 @@ size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 }
 
 
-bool Imperio_Jogador::pode_adquirir(std::string tipo)
-{
+bool Imperio_Jogador::pode_adquirir(std::string tipo) {
 	string aux;
 	for (int i = 0; i < this->tecnologias.size(); i++) {
 		aux = this->tecnologias[i]->get_nome();
@@ -147,7 +166,7 @@ bool Imperio_Jogador::territorio_invadido(const int fator_sorte) {
 	int offset = this->territorios_conquistados.size() - 1;
 	Territorio *ter = this->territorios_conquistados[offset];
 	int res = ter->get_resistencia();
-	res += adquiriu_tecnologia("defesasterritoriais") ? 1 : 0;
+	res += this->adquiriu_tecnologia("defesasterritoriais") ? 1 : 0;
 	if (fator_sorte < res)
 		return false;
 	this->territorios_conquistados.erase(this->territorios_conquistados.begin() + offset);
