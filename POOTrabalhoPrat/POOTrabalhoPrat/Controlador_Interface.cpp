@@ -158,7 +158,6 @@ void Controlador_Interface::ler_cmd(string comando) {
 			cmd_lista(str[1]);
 	}
 	else if (str[0].compare("passa") == 0) {
-		//TODO bool passar
 		if (fase == 0)
 			cmd_passa();
 	}
