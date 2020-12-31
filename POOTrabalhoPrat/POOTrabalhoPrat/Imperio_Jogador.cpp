@@ -81,13 +81,26 @@ size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 	return this->territorios_conquistados.size();
 }
 
-bool Imperio_Jogador::pode_conquistar_ilha() {
-	return ((this->tamanho_territorios_conquistados() >= 5));
+
+bool Imperio_Jogador::pode_adquirir(std::string tipo)
+{
+	string aux;
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		aux = this->tecnologias[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (aux.compare(tipo) == 0) {
+			return this->tecnologias[i]->comprar(*this);
+		}
+	}
+	return false;
 }
 
 bool Imperio_Jogador::adquiriu_tecnologia(std::string tecnologia) {
+	string aux;
 	for (int i = 0; i < this->tecnologias.size(); i++) {
-		if (this->tecnologias[i]->get_nome().compare(tecnologia) == 0) {
+		aux = this->tecnologias[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (aux.compare(tecnologia) == 0) {
 			return this->tecnologias[i]->ja_adquirido();
 		}
 	}

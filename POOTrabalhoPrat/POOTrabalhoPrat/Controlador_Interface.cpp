@@ -103,12 +103,43 @@ void Controlador_Interface::cmd_maismilitar() {
 	}
 }
 
-void Controlador_Interface::cmd_adquire() {
-
+void Controlador_Interface::cmd_adquire(const string tipo) {
+		bool adquirido = this->jogo->get_mundo()->get_imperio()->pode_adquirir(tipo);
+		//TODO
+		if (adquirido) {
+			cout << "Comando aquire efetuado com sucesso!";
+		}
+		else {
+			cout << "\nImpossivel aquirir a tecnologia que desejava!\n";
+		}
 }
 
 void Controlador_Interface::cmd_avanca() {
 	this->jogo->incrementa_fase();
+}
+
+void Controlador_Interface::cmd_grava(const std::string)
+{
+}
+
+void Controlador_Interface::cmd_ativa(const std::string)
+{
+}
+
+void Controlador_Interface::cmd_apaga(const std::string)
+{
+}
+
+void Controlador_Interface::cmd_toma(const std::string, const std::string)
+{
+}
+
+void Controlador_Interface::cmd_modifica(const std::string, const int)
+{
+}
+
+void Controlador_Interface::cmd_fevento(const std::string)
+{
 }
 
 void Controlador_Interface::ler_cmd(string comando) {
@@ -157,22 +188,36 @@ void Controlador_Interface::ler_cmd(string comando) {
 		}
 	} else if (str[0].compare("adquire") == 0) {
 		if (fase == 2) {
-			cmd_adquire();
+			if (str.size() < 2)
+				return;
+			cmd_adquire(str[1]);
 		}
 	} else if (str[0].compare("avanca") == 0) {
 		cmd_avanca();
 	} else if (str[0].compare("grava") == 0) {
-
+		if (str.size() < 2)
+			return;
+		cmd_grava(str[1]);
 	} else if (str[0].compare("ativa") == 0) {
-
+		if (str.size() < 2)
+			return;
+		cmd_ativa(str[1]);
 	} else if (str[0].compare("apaga") == 0) {
-
+		if (str.size() < 2)
+			return;
+		cmd_apaga(str[1]);
 	} else if (str[0].compare("toma") == 0) {
-
+		if (str.size() < 3)
+			return;
+		cmd_toma(str[1], str[2]);
 	} else if (str[0].compare("modifica") == 0) {
-
+		if (str.size() < 3)
+			return;
+		cmd_modifica(str[1], stoi(str[2]));
 	} else if (str[0].compare("fevento") == 0) {
-
+		if (str.size() < 2)
+			return;
+		cmd_fevento(str[1]);
 	}
 }
 
