@@ -31,7 +31,7 @@ public:
 	~Jogo();
 	Mundo *const get_mundo();
 	void adicionar_territorio(Territorio *ter);
-	void conquistar_territorio(std::string territorio);
+	bool conquistar_territorio(std::string territorio);
 	void mostra_territorio(std::string territorio);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();

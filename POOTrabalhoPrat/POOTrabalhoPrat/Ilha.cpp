@@ -12,6 +12,11 @@ Ilha::~Ilha() {}
 
 bool Ilha::ser_conquistado(Imperio_Jogador &imp) {
 	// Verificar se tem as tecnologias necessárias
+	bool adquiriu_tec = imp.adquiriu_tecnologia("Misseis Teleguiados");
+	int numero_terr_conquistados = imp.tamanho_territorios_conquistados();
 	// Proceder à conquista caso seja possível conquistar
+	if (adquiriu_tec && numero_terr_conquistados >= 5) {
+		return imp.adicionar_territorio_conquistado(this);
+	}
 	return false;
 }

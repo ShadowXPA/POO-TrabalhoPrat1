@@ -13,8 +13,7 @@ Mundo::~Mundo() {
 	}
 }
 
-Imperio_Jogador* const Mundo::get_imperio()
-{
+Imperio_Jogador *const Mundo::get_imperio() {
 	return this->imperio;
 }
 
@@ -31,20 +30,16 @@ void Mundo::adicionar_territorio(Territorio *ter) {
 	this->territorios.push_back(ter);
 }
 
-void Mundo::conquistar_territorio(string nome) {
-	Territorio_Inicial *ti = new Territorio_Inicial();
+bool Mundo::conquistar_territorio(string nome) {
 	string aux;
 	for (int i = 0; i < this->territorios.size(); i++) {
 		aux = this->territorios[i]->get_nome();
 		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
 		if (aux.compare(nome) == 0) {
-			if (typeid(this->territorios[i]) != typeid(*ti)) {
-				this->imperio->adicionar_territorio_conquistado(this->territorios[i]);
-			}
-			break;
+			return this->territorios[i]->ser_conquistado(*this->get_imperio());
 		}
 	}
-	delete ti;
+	return false;
 }
 
 void Mundo::mostra_territorios_imperio() {
@@ -64,8 +59,7 @@ void Mundo::mostra_territorios_nao_conquistados() {
 	}
 }
 
-void Mundo::mostra_territorio(string nome_territorio)
-{
+void Mundo::mostra_territorio(string nome_territorio) {
 	string aux;
 	for (int i = 0; i < this->territorios.size(); i++) {
 		aux = this->territorios[i]->get_nome();

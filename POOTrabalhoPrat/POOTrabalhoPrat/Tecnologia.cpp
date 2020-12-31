@@ -1,5 +1,7 @@
 #include "Tecnologia.h"
 
+using namespace std;
+
 Tecnologia::Tecnologia(string nome, string objetivo, int custo) {
 	this->nome = nome;
 	this->objetivo = objetivo;

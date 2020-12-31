@@ -8,7 +8,7 @@ void Territorio_Inicial::set_criacao_produtos(int) {}
 
 void Territorio_Inicial::set_criacao_ouro(int) {}
 
-bool Territorio_Inicial::ser_conquistado(Imperio_Jogador &) {
+bool Territorio_Inicial::ser_conquistado(Imperio_Jogador &imp) {
     // Um território inicial não deveria ser conquistado...
     return false;
 }

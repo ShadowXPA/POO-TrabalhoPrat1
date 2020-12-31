@@ -24,8 +24,8 @@ void Jogo::adicionar_territorio(Territorio *ter) {
 	this->mundo->adicionar_territorio(ter);
 }
 
-void Jogo::conquistar_territorio(string territorio) {
-	this->mundo->conquistar_territorio(territorio);
+bool Jogo::conquistar_territorio(string territorio) {
+	return this->mundo->conquistar_territorio(territorio);
 }
 
 void Jogo::mostra_territorio(string territorio) {

@@ -3,6 +3,11 @@
 #include "Territorio.h"
 #include "Territorio_Inicial.h"
 #include "Tecnologia.h"
+#include "Banco_Central.h"
+#include "Bolsa_Valores.h"
+#include "Defesas_Territoriais.h"
+#include "Drones_Militares.h"
+#include "Misseis_Teleguiados.h"
 #include "Ilha.h"
 #include <vector>
 #include <typeinfo>
@@ -35,7 +40,8 @@ public:
 	int gerar_fator_sorte(int = 1, int = 6);
 	size_t tamanho_territorios_conquistados();
 	bool pode_conquistar_ilha();
-	void adicionar_territorio_conquistado(Territorio *);
+	bool adquiriu_tecnologia(std::string);
+	bool adicionar_territorio_conquistado(Territorio *);
 	void adicionar_territorio_inicial(Territorio_Inicial *);
 	void mostra_territorios_conquistados();
 	bool encontra_territorio(Territorio *);

@@ -10,6 +10,11 @@ Imperio_Jogador::Imperio_Jogador() {
 	this->forca_militar = 0;
 	this->max_forca_militar = 3;
 	this->fator_sorte = 0;
+	this->tecnologias.push_back(new Banco_Central());
+	this->tecnologias.push_back(new Bolsa_Valores());
+	this->tecnologias.push_back(new Defesas_Territoriais());
+	this->tecnologias.push_back(new Drones_Militares());
+	this->tecnologias.push_back(new Misseis_Teleguiados());
 }
 
 Imperio_Jogador::~Imperio_Jogador() {
@@ -22,8 +27,7 @@ int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
-bool Imperio_Jogador::maisprod()
-{
+bool Imperio_Jogador::maisprod() {
 	if (this->cofre >= 2 && this->armazem < this->max_armazem) {
 		this->armazem++;
 		this->cofre -= 2;
@@ -36,8 +40,7 @@ int Imperio_Jogador::get_cofre() {
 	return this->cofre;
 }
 
-bool Imperio_Jogador::maisouro()
-{
+bool Imperio_Jogador::maisouro() {
 	if (this->armazem >= 2 && this->cofre < this->max_cofre) {
 		this->cofre++;
 		this->armazem -= 2;
@@ -56,8 +59,7 @@ int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
 }
 
-bool Imperio_Jogador::maismilitar()
-{
+bool Imperio_Jogador::maismilitar() {
 	if (this->armazem >= 1 && this->cofre >= 1 && this->forca_militar < this->max_forca_militar) {
 		this->forca_militar++;
 		this->armazem--;
@@ -83,22 +85,28 @@ bool Imperio_Jogador::pode_conquistar_ilha() {
 	return ((this->tamanho_territorios_conquistados() >= 5));
 }
 
-void Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
-	// TODO arranjar isto
-	bool pode_conquistar = false;
+bool Imperio_Jogador::adquiriu_tecnologia(std::string tecnologia) {
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		if (this->tecnologias[i]->get_nome().compare(tecnologia) == 0) {
+			return this->tecnologias[i]->ja_adquirido();
+		}
+	}
+	return false;
+}
+
+bool Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	this->fator_sorte = this->gerar_fator_sorte();
 	this->fator_sorte += this->forca_militar;
 
 	if (this->fator_sorte >= ter->get_resistencia()) {
-		if (!this->encontra_territorio(ter) && (this->pode_conquistar_ilha())) {
-			pode_conquistar = true;
-		}
-		if (pode_conquistar) {
+		if (!this->encontra_territorio(ter)) {
 			this->territorios_conquistados.push_back(ter);
+			return true;
 		}
 	} else {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
+	return false;
 }
 
 void Imperio_Jogador::adicionar_territorio_inicial(Territorio_Inicial *ter) {

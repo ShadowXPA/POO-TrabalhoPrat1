@@ -10,6 +10,6 @@ Continente::Continente(string nome, int resistencia, int criacao_produtos, int c
 
 Continente::~Continente() {}
 
-bool Continente::ser_conquistado(Imperio_Jogador &) {
-	return false;
+bool Continente::ser_conquistado(Imperio_Jogador &imp) {
+	return imp.adicionar_territorio_conquistado(this);
 }

@@ -2,13 +2,11 @@
 
 using namespace std;
 
-Controlador_Interface::Controlador_Interface()
-{
+Controlador_Interface::Controlador_Interface() {
 	this->jogo = new Jogo();
 }
 
-Controlador_Interface::~Controlador_Interface()
-{
+Controlador_Interface::~Controlador_Interface() {
 	delete this->jogo;
 }
 
@@ -17,35 +15,28 @@ void Controlador_Interface::cmd_cria(string tipo, const int n) {
 	for (int i = 0; i < n; i++) {
 		if (tipo.compare("castelo") == 0) {
 			this->jogo->adicionar_territorio(new Castelo());
-		}
-		else if (tipo.compare("duna") == 0) {
+		} else if (tipo.compare("duna") == 0) {
 			this->jogo->adicionar_territorio(new Duna());
-		}
-		else if (tipo.compare("forteleza") == 0) {
+		} else if (tipo.compare("forteleza") == 0) {
 			this->jogo->adicionar_territorio(new Fortaleza());
-		}
-		else if (tipo.compare("mina") == 0) {
+		} else if (tipo.compare("mina") == 0) {
 			this->jogo->adicionar_territorio(new Mina());
-		}
-		else if (tipo.compare("montanha") == 0) {
+		} else if (tipo.compare("montanha") == 0) {
 			this->jogo->adicionar_territorio(new Montanha());
-		}
-		else if (tipo.compare("planicie") == 0) {
+		} else if (tipo.compare("planicie") == 0) {
 			this->jogo->adicionar_territorio(new Planicie());
-		}
-		else if (tipo.compare("pescaria") == 0) {
+		} else if (tipo.compare("pescaria") == 0) {
 			this->jogo->adicionar_territorio(new Pescaria());
-		}
-		else if (tipo.compare("refugiopiratas") == 0) {
+		} else if (tipo.compare("refugiopiratas") == 0) {
 			this->jogo->adicionar_territorio(new Refugio_Piratas());
-		}
-		else {
+		} else {
 			break;
 		}
 	}
 }
 
 void Controlador_Interface::cmd_conquista(const string nome) {
+	// TODO mostrar resultado
 	this->jogo->conquistar_territorio(nome);
 }
 
@@ -58,13 +49,12 @@ void Controlador_Interface::cmd_carrega(const string nome_fich) {
 			cout << Line << endl;
 		}
 		File.close();
-	}
-	else
+	} else
 		cout << "Erro ao carregar o ficheiro!\n";
 }
 
 void Controlador_Interface::cmd_lista(const string nome) {
-	if (nome == "") {
+	if (nome.compare("") == 0) {
 		cout << "Ano: " << this->jogo->get_ano();
 		cout << "\nTurno: " << this->jogo->get_turno();
 		cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
@@ -80,8 +70,7 @@ void Controlador_Interface::cmd_lista(const string nome) {
 		//Tecnologias existentes(nome, preço, resumo do objetivo, adquirida / não adquirida)
 		//Evento que vai ocorrer(nome, resumo dos efeitos)
 		//Pontuação final
-	}
-	else {
+	} else {
 		this->jogo->mostra_territorio(nome);
 	}
 }
@@ -93,8 +82,7 @@ void Controlador_Interface::cmd_passa() {
 void Controlador_Interface::cmd_maisouro() {
 	if (this->jogo->get_mundo()->get_imperio()->maisouro()) {
 		cout << "Comando maisouro efetuado com sucesso!";
-	}
-	else {
+	} else {
 		cout << "\nImpossivel obter mais ouro pois nao tem pelo menos 2 produtos!\n";
 	}
 }
@@ -102,24 +90,24 @@ void Controlador_Interface::cmd_maisouro() {
 void Controlador_Interface::cmd_maisprod() {
 	if (this->jogo->get_mundo()->get_imperio()->maisprod()) {
 		cout << "Comando maisprod efetuado com sucesso!";
-	}
-	else {
+	} else {
 		cout << "\nImpossivel obter mais produtos pois nao tem pelo menos 2 ouro!\n";
 	}
 }
 
-void Controlador_Interface::cmd_maismilitar()
-{
+void Controlador_Interface::cmd_maismilitar() {
 	if (this->jogo->get_mundo()->get_imperio()->maismilitar()) {
 		cout << "Comando maismilitar efetuado com sucesso!";
-	}
-	else {
+	} else {
 		cout << "\nImpossivel obter mais militar pois nao tem pelo menos 1 ouro e 1 produto!\n";
 	}
 }
 
-void Controlador_Interface::cmd_avanca()
-{
+void Controlador_Interface::cmd_adquire() {
+
+}
+
+void Controlador_Interface::cmd_avanca() {
 	this->jogo->incrementa_fase();
 }
 
@@ -129,77 +117,61 @@ void Controlador_Interface::ler_cmd(string comando) {
 	int fase = this->jogo->get_fase();
 	if (str[0].compare("sair") == 0) {
 		this->jogo->get_jogo_a_correr() = false;
-	}
-	else if (str[0].compare("cria") == 0) {
+	} else if (str[0].compare("cria") == 0) {
 		if (fase == -1) {
 			if (str.size() < 3)
 				return;
 			cmd_cria(str[1], stoi(str[2]));
 		}
-	}
-	else if (str[0].compare("conquista") == 0) {
+	} else if (str[0].compare("conquista") == 0) {
 		if (fase == 0) {
 			if (str.size() < 2)
 				return;
 			cmd_conquista(str[1]);
 		}
-	}
-	else if (str[0].compare("carrega") == 0) {
+	} else if (str[0].compare("carrega") == 0) {
 		if (fase == -1) {
 			if (str.size() < 2)
 				return;
 			cmd_carrega(str[1]);
 		}
-	}
-	else if (str[0].compare("lista") == 0) {
+	} else if (str[0].compare("lista") == 0) {
 		if (str.size() < 2)
 			cmd_lista("");
 		else
 			cmd_lista(str[1]);
-	}
-	else if (str[0].compare("passa") == 0) {
+	} else if (str[0].compare("passa") == 0) {
 		if (fase == 0)
 			cmd_passa();
-	}
-	else if (str[0].compare("maisouro") == 0) {
+	} else if (str[0].compare("maisouro") == 0) {
 		if (fase == 1) {
 			cmd_maisouro();
 		}
-	}
-	else if (str[0].compare("maisprod") == 0) {
+	} else if (str[0].compare("maisprod") == 0) {
 		if (fase == 1) {
 			cmd_maisprod();
 		}
-	}
-	else if (str[0].compare("maismilitar") == 0) {
+	} else if (str[0].compare("maismilitar") == 0) {
 		if (fase == 2) {
 			cmd_maismilitar();
 		}
-	}
-	else if (str[0].compare("adquire") == 0) {
+	} else if (str[0].compare("adquire") == 0) {
 		if (fase == 2) {
-
+			cmd_adquire();
 		}
-	}
-	else if (str[0].compare("avanca") == 0) {
+	} else if (str[0].compare("avanca") == 0) {
 		cmd_avanca();
-	}
-	else if (str[0].compare("grava") == 0) {
+	} else if (str[0].compare("grava") == 0) {
 
-	}
-	else if (str[0].compare("ativa") == 0) {
+	} else if (str[0].compare("ativa") == 0) {
 
-	}
-	else if (str[0].compare("apaga") == 0) {
+	} else if (str[0].compare("apaga") == 0) {
 
-	}
-	else if (str[0].compare("toma") == 0) {
+	} else if (str[0].compare("toma") == 0) {
 
-	}
-	else if (str[0].compare("modifica") == 0) {
+	} else if (str[0].compare("modifica") == 0) {
 
-	}
-	else if (str[0].compare("fevento") == 0) {
+	} else if (str[0].compare("fevento") == 0) {
 
 	}
 }
