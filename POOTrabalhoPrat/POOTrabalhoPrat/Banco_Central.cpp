@@ -1,4 +1,5 @@
 #include "Banco_Central.h"
+#include "Imperio_Jogador.h"
 
 Banco_Central::Banco_Central() : Tecnologia("BancoCentral", "Esta tecnologia permite aumentar em duas unidades a capacidade de armazenamento do armazem e do cofre do imperio.", 3) {}
 

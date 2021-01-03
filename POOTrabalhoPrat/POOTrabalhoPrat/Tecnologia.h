@@ -1,7 +1,8 @@
 #pragma once
 
+class Imperio_Jogador;
 #include <string>
-#include "Imperio_Jogador.h"
+#include <iostream>
 
 class Tecnologia {
 private:

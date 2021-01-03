@@ -5,5 +5,5 @@ Defesas_Territoriais::Defesas_Territoriais() : Tecnologia("DefesasTerritoriais",
 Defesas_Territoriais::~Defesas_Territoriais() {}
 
 bool Defesas_Territoriais::comprar(Imperio_Jogador &imp) {
-	return Tecnologia::comprar(imp);
+    return Tecnologia::comprar(imp);
 }

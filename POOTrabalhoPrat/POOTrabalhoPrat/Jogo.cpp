@@ -10,14 +10,20 @@ Jogo::Jogo() {
 	this->jogo_a_correr = true;
 	this->mundo = new Mundo();
 	this->mundo->adicionar_territorio_inicial(new Territorio_Inicial());
+	this->set_proximo_evento(this->mundo->get_imperio()->gerar_fator_sorte(0, 3));
 }
 
 Jogo::~Jogo() {
 	delete this->mundo;
+	delete this->evento;
 }
 
 Mundo *const Jogo::get_mundo() {
 	return this->mundo;
+}
+
+Evento *const Jogo::get_evento() {
+	return this->evento;
 }
 
 void Jogo::adicionar_territorio(Territorio *ter) {
@@ -52,8 +58,7 @@ int Jogo::get_fator_sorte() {
 	return this->mundo->get_fator_sorte();
 }
 
-int Jogo::get_fase()
-{
+int Jogo::get_fase() {
 	return this->fase;
 }
 
@@ -71,52 +76,43 @@ void Jogo::recolha_produtos_ouro() {}
 
 void Jogo::compra_unidades() {}
 
-void Jogo::occorencia_evento() {}
+void Jogo::occorencia_evento() {
+	this->evento->efeito(this->get_mundo()->get_imperio(), this->get_ano());
+}
 
-void Jogo::termina_turno() {}
-
-
-/*
-void Jogo::ler_cmd(string comando) {
-	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);
-	auto str = stringSplit(comando, " ");
-	if (str[0].compare("sair") == 0) {
+void Jogo::termina_turno() {
+	this->pontuacao = this->mundo->get_imperio()->obter_pontos(this->mundo->get_num_territorios());
+	if (this->get_ano() == 2.0f) {
 		this->jogo_a_correr = false;
-	} else if (str[0].compare("cria") == 0) {
-		if (str.size() < 3)
-			return;
-		cmd_cria(str[1], stoi(str[2]));
-	} else if (str[0].compare("conquista") == 0) {
-		if (str.size() < 2)
-			return;
-		cmd_conquista(str[1]);
-	} else if (str[0].compare("carrega") == 0) {
-		if (str.size() < 2)
-			return;
-		cmd_carrega(str[1]);
-	} else if (str[0].compare("lista") == 0) {
-		if (str.size() < 2)
-			cmd_lista("");
-		else
-			cmd_lista(str[1]);
 	}
 }
 
-void Jogo::inicia() {
-	ler_cmd("carrega Territorios.txt");
+void Jogo::get_evento_string() {
+	cout << endl;
+	cout << this->evento->get_nome() << ": " << this->evento->get_descricao();
+	cout << endl;
 }
 
-
-vector<string> Jogo::stringSplit(const string str_to_split, const string delimiter) {
-	vector<string> list;
-	string str(str_to_split);
-	size_t position = 0;
-	string token;
-	while ((position = str.find(delimiter)) != string::npos) {
-		token = str.substr(0, position);
-		list.push_back(token);
-		str.erase(0, position + delimiter.length());
+void Jogo::set_proximo_evento(int i) {
+	switch (i) {
+		case 1:
+		{
+			this->evento = new Alianca_Diplomatica();
+			break;
+		}
+		case 2:
+		{
+			this->evento = new Invasao();
+			break;
+		}
+		case 3:
+		{
+			this->evento = new Recurso_Abandonado();
+			break;
+		}
+		case 0:
+		default:
+			this->evento = new Evento();
+			break;
 	}
-	list.push_back(str);
-	return list;
-}*/
+}

@@ -12,6 +12,7 @@ public:
 	~Mundo();
 	Imperio_Jogador* const get_imperio();
 	int get_fator_sorte();
+	size_t get_num_territorios();
 	void adicionar_territorio_inicial(Territorio_Inicial *);
 	void adicionar_territorio(Territorio *);
 	bool conquistar_territorio(std::string);

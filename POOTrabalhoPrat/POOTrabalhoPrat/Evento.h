@@ -1,7 +1,8 @@
 #pragma once
 
+class Imperio_Jogador;
 #include <string>
-#include "Imperio_Jogador.h"
+#include <iostream>
 
 class Evento {
 protected:
@@ -13,5 +14,5 @@ public:
 	~Evento();
 	std::string get_nome();
 	std::string get_descricao();
-	virtual void efeito(Imperio_Jogador *const, const int);
+	virtual void efeito(Imperio_Jogador *const, const float);
 };

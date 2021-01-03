@@ -6,5 +6,5 @@ class Ilha : public Territorio {
 public:
 	Ilha(std::string, int, int, int);
 	~Ilha();
-	virtual bool ser_conquistado(Imperio_Jogador &) override;
+	bool ser_conquistado(Imperio_Jogador &) override;
 };

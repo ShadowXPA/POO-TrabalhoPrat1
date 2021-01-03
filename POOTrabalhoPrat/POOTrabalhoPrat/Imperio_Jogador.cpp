@@ -115,7 +115,7 @@ int Imperio_Jogador::get_fator_sorte() {
 }
 
 int Imperio_Jogador::gerar_fator_sorte(int min, int max) {
-	return (rand() % max) + min;
+	return min + rand() % (max - min + 1);
 }
 
 size_t Imperio_Jogador::tamanho_territorios_conquistados() {
@@ -163,7 +163,7 @@ bool Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 }
 
 bool Imperio_Jogador::territorio_invadido(const int fator_sorte) {
-	int offset = this->territorios_conquistados.size() - 1;
+	size_t offset = this->territorios_conquistados.size() - 1;
 	Territorio *ter = this->territorios_conquistados[offset];
 	int res = ter->get_resistencia();
 	res += this->adquiriu_tecnologia("defesasterritoriais") ? 1 : 0;
@@ -194,4 +194,26 @@ bool Imperio_Jogador::encontra_territorio(Territorio *ter) {
 		}
 	}
 	return false;
+}
+
+void Imperio_Jogador::adquire_prod_ouro() {
+	for (int i = 0, j = 0; i < this->territorios_conquistados.size() && j != 2; i++, j = 0) {
+		auto ter = this->territorios_conquistados[i];
+		j += incrementa_armazem(ter->get_criacao_produtos()) ? 0 : 1;
+		j += incrementa_cofre(ter->get_criacao_ouro()) ? 0 : 1;
+	}
+}
+
+int Imperio_Jogador::obter_pontos(size_t num_ter) {
+	int tmp = 0, ter = 0, tec = 0;
+	size_t num_ter_conq = this->territorios_conquistados.size();
+	for (int i = 0; i < num_ter_conq; i++) {
+		ter += this->territorios_conquistados[i]->get_pontos_vitoria();
+	}
+	tmp += num_ter == num_ter_conq ? ter + 3 : ter;
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		tec += this->tecnologias[i]->ja_adquirido() ? 1 : 0;
+	}
+	tmp += tec >= 5 ? tec + 1 : tec;
+	return tmp;
 }

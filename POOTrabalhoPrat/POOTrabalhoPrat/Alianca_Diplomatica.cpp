@@ -1,4 +1,5 @@
 #include "Alianca_Diplomatica.h"
+#include "Imperio_Jogador.h"
 
 using namespace std;
 
@@ -6,7 +7,7 @@ Alianca_Diplomatica::Alianca_Diplomatica() : Evento("AliancaDiplomatica", "E ass
 
 Alianca_Diplomatica::~Alianca_Diplomatica() {}
 
-void Alianca_Diplomatica::efeito(Imperio_Jogador *const imp, const int ano) {
+void Alianca_Diplomatica::efeito(Imperio_Jogador *const imp, const float ano) {
 	// Efeito causado pela aliança
 	Evento::efeito(imp, ano);
 	imp->incrementa_militar();

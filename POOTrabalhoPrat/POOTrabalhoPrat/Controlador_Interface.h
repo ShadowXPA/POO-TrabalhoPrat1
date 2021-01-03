@@ -4,6 +4,8 @@
 
 class Controlador_Interface {
 private:
+	static bool s_f2_prod_ouro;
+	static bool s_f3_mil_tec;
 	Jogo *jogo;
 public:
 	Controlador_Interface();

@@ -4,7 +4,7 @@ using namespace std;
 
 Evento::Evento() : Evento("SemEvento", "Nada ocorre e todos podem dormir descansados.") {}
 
-Evento::Evento(string nome, string descricao) {
+Evento::Evento(int evento, string nome, string descricao) {
 	unsigned int static s_count = 0;
 	s_count++;
 	this->nome = nome;
@@ -22,6 +22,6 @@ std::string Evento::get_descricao() {
 	return this->descricao;
 }
 
-void Evento::efeito(Imperio_Jogador *const imp, const int ano) {
+void Evento::efeito(Imperio_Jogador *const imp, const float ano) {
 	cout << this->descricao << endl;
 }

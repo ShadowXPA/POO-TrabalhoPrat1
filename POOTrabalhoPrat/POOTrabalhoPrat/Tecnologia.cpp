@@ -1,4 +1,5 @@
 #include "Tecnologia.h"
+#include "Imperio_Jogador.h"
 
 using namespace std;
 

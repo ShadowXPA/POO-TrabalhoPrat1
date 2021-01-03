@@ -11,8 +11,9 @@ Controlador_Interface::~Controlador_Interface() {
 }
 
 void Controlador_Interface::cmd_cria(string tipo, const int n) {
+	int i = 0;
 	transform(tipo.begin(), tipo.end(), tipo.begin(), ::tolower);
-	for (int i = 0; i < n; i++) {
+	for (; i < n; i++) {
 		if (tipo.compare("castelo") == 0) {
 			this->jogo->adicionar_territorio(new Castelo());
 		} else if (tipo.compare("duna") == 0) {
@@ -32,6 +33,9 @@ void Controlador_Interface::cmd_cria(string tipo, const int n) {
 		} else {
 			break;
 		}
+	}
+	if (i != 0) {
+		cout << "\nCriado " << n << " territorios do tipo: " << tipo << endl;
 	}
 }
 
@@ -60,6 +64,7 @@ void Controlador_Interface::cmd_lista(const string nome) {
 	if (nome.compare("") == 0) {
 		cout << "Ano: " << this->jogo->get_ano();
 		cout << "\nTurno: " << this->jogo->get_turno();
+		cout << "\nFase: " << this->jogo->get_fase();
 		cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
 		cout << "\n------------------";
 		cout << "\nTerritorios conquistados:";
@@ -79,7 +84,7 @@ void Controlador_Interface::cmd_lista(const string nome) {
 }
 
 void Controlador_Interface::cmd_passa() {
-	this->jogo->incrementa_fase();
+	this->ler_cmd("avanca");
 }
 
 void Controlador_Interface::cmd_maisouro() {
@@ -117,6 +122,47 @@ void Controlador_Interface::cmd_adquire(const string tipo) {
 void Controlador_Interface::cmd_avanca() {
 	this->jogo->incrementa_fase();
 	// TODO verificar a fase e executar fases automáticas (exemplo: fase de eventos)
+	switch (this->jogo->get_fase()) {
+		case 0:
+		{
+			// Conquistar / Passar
+			break;
+		}
+		case 1:
+		{
+			// Recolha de produtos e ouro
+			// Adquirir produtos e ouro de cada território
+			this->jogo->get_mundo()->get_imperio()->adquire_prod_ouro();
+			// Permitir a leitura de mais comandos se o império tiver a tecnologia "Bolsa de Valores"
+			if (!this->jogo->get_mundo()->get_imperio()->adquiriu_tecnologia("bolsavalores")) {
+				this->ler_cmd("avanca");
+			}
+			// Uma vez por turno
+			s_f2_prod_ouro = false;
+			break;
+		}
+		case 2:
+		{
+			// Compra de unidades militares e tecnologia
+			// Uma vez por turno
+			s_f3_mil_tec = false;
+			break;
+		}
+		case 3:
+		{
+			// Fase de Eventos
+			// Ativar o Evento e escolher o próximo evento
+			this->jogo->occorencia_evento();
+			// Somar todos os pontos adquiridos neste turno
+			// e Verificar se chegou o fim do jogo!
+			this->jogo->termina_turno();
+			// Passar para a próxima fase
+			this->ler_cmd("avanca");
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 void Controlador_Interface::cmd_grava(const std::string) {}
@@ -142,18 +188,24 @@ void Controlador_Interface::ler_cmd(string comando) {
 			if (str.size() < 3)
 				return;
 			cmd_cria(str[1], stoi(str[2]));
+		} else {
+			cout << "\nA fase de inicializacao ja terminou!\n";
 		}
 	} else if (str[0].compare("conquista") == 0) {
 		if (fase == 0) {
 			if (str.size() < 2)
 				return;
 			cmd_conquista(str[1]);
+		} else {
+			cout << "\nA primeira fase ja terminou!\n";
 		}
 	} else if (str[0].compare("carrega") == 0) {
 		if (fase == -1) {
 			if (str.size() < 2)
 				return;
 			cmd_carrega(str[1]);
+		} else {
+			cout << "\nA fase de inicializacao ja terminou!\n";
 		}
 	} else if (str[0].compare("lista") == 0) {
 		if (str.size() < 2)
@@ -161,25 +213,56 @@ void Controlador_Interface::ler_cmd(string comando) {
 		else
 			cmd_lista(str[1]);
 	} else if (str[0].compare("passa") == 0) {
-		if (fase == 0)
+		if (fase == 0) {
 			cmd_passa();
+		} else {
+			cout << "\nA primeira fase ja terminou!\n";
+		}
 	} else if (str[0].compare("maisouro") == 0) {
 		if (fase == 1) {
-			cmd_maisouro();
+			if (!s_f2_prod_ouro) {
+				s_f2_prod_ouro = true;
+				cmd_maisouro();
+			} else {
+				cout << "\nJa adquiriu ouro neste turno!\n";
+			}
+		} else {
+			cout << "\nA segunda fase ja terminou!\n";
 		}
 	} else if (str[0].compare("maisprod") == 0) {
 		if (fase == 1) {
-			cmd_maisprod();
+			if (!s_f2_prod_ouro) {
+				s_f2_prod_ouro = true;
+				cmd_maisprod();
+			} else {
+				cout << "\nJa adquiriu produtos neste turno!\n";
+			}
+		} else {
+			cout << "\nA segunda fase ja terminou!\n";
 		}
 	} else if (str[0].compare("maismilitar") == 0) {
 		if (fase == 2) {
-			cmd_maismilitar();
+			if (!s_f3_mil_tec) {
+				s_f3_mil_tec = true;
+				cmd_maismilitar();
+			} else {
+				cout << "\nJa adquiriu militares neste turno!\n";
+			}
+		} else {
+			cout << "\nA terceira fase ja terminou!\n";
 		}
 	} else if (str[0].compare("adquire") == 0) {
 		if (fase == 2) {
 			if (str.size() < 2)
 				return;
-			cmd_adquire(str[1]);
+			if (!s_f3_mil_tec) {
+				s_f3_mil_tec = true;
+				cmd_adquire(str[1]);
+			} else {
+				cout << "\nJa adquiriu tecnologias neste turno!\n";
+			}
+		} else {
+			cout << "\nA terceira fase ja terminou!\n";
 		}
 	} else if (str[0].compare("avanca") == 0) {
 		cmd_avanca();
@@ -212,13 +295,13 @@ void Controlador_Interface::ler_cmd(string comando) {
 
 void Controlador_Interface::inicia() {
 	this->ler_cmd("carrega Territorios.txt");
-	//algo para controlar as fases....
 	while (this->jogo->get_jogo_a_correr()) {
 		string str = "";
 		cout << "\nIntroduza o comando que deseja: ";
 		getline(cin, str);
 		this->ler_cmd(str);
 	}
+	// TODO: Mostrar resultados finais...
 }
 
 vector<string> Controlador_Interface::stringSplit(const string str_to_split, const string delimiter) {

@@ -4,9 +4,8 @@
 
 class Invasao : public Evento {
 private:
-
 public:
 	Invasao();
 	~Invasao();
-	void efeito(Imperio_Jogador *const, const int) override;
+	void efeito(Imperio_Jogador *const, const float) override;
 };

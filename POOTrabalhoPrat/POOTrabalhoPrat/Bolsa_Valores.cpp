@@ -5,5 +5,5 @@ Bolsa_Valores::Bolsa_Valores() : Tecnologia("BolsaValores", "Sistema comercial q
 Bolsa_Valores::~Bolsa_Valores() {}
 
 bool Bolsa_Valores::comprar(Imperio_Jogador &imp) {
-	return Tecnologia::comprar(imp);
+    return Tecnologia::comprar(imp);
 }

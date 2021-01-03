@@ -1,4 +1,5 @@
 #include "Drones_Militares.h"
+#include "Imperio_Jogador.h"
 
 Drones_Militares::Drones_Militares() : Tecnologia("DronesMilitares", "Esta tecnologia faz passar o limite maximo da forca militar para cinco.", 3) {}
 

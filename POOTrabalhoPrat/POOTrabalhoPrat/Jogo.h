@@ -18,6 +18,7 @@
 class Jogo {
 private:
 	Mundo *mundo;
+	Evento *evento;
 	int turno;
 	int pontuacao;
 	bool jogo_a_correr;
@@ -30,6 +31,7 @@ public:
 	Jogo();
 	~Jogo();
 	Mundo *const get_mundo();
+	Evento *const get_evento();
 	void adicionar_territorio(Territorio *ter);
 	bool conquistar_territorio(std::string territorio);
 	void mostra_territorio(std::string territorio);
@@ -41,11 +43,11 @@ public:
 	int get_fator_sorte();
 	bool &get_jogo_a_correr();
 	void incrementa_fase();
-	/*void ler_cmd(string);
-	void inicia();*/
 	void conquistar_passar();
 	void recolha_produtos_ouro();
 	void compra_unidades();
 	void occorencia_evento();
 	void termina_turno();
+	void get_evento_string();
+	void set_proximo_evento(int);
 };

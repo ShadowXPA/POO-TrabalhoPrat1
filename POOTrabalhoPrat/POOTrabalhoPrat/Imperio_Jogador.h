@@ -9,6 +9,9 @@
 #include "Drones_Militares.h"
 #include "Misseis_Teleguiados.h"
 #include "Ilha.h"
+#include "Alianca_Diplomatica.h"
+#include "Invasao.h"
+#include "Recurso_Abandonado.h"
 #include <vector>
 #include <typeinfo>
 #include <random>
@@ -52,4 +55,6 @@ public:
 	void adicionar_territorio_inicial(Territorio_Inicial *);
 	void mostra_territorios_conquistados();
 	bool encontra_territorio(Territorio *);
+	void adquire_prod_ouro();
+	int obter_pontos(size_t );
 };

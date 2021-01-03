@@ -21,6 +21,10 @@ int Mundo::get_fator_sorte() {
 	return this->imperio->get_fator_sorte();
 }
 
+size_t Mundo::get_num_territorios() {
+	return this->territorios.size();
+}
+
 void Mundo::adicionar_territorio_inicial(Territorio_Inicial *ter) {
 	this->imperio->adicionar_territorio_inicial(ter);
 	this->adicionar_territorio(ter);
