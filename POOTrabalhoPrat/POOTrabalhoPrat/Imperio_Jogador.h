@@ -56,5 +56,5 @@ public:
 	void mostra_territorios_conquistados();
 	bool encontra_territorio(Territorio *);
 	void adquire_prod_ouro();
-	int obter_pontos(size_t );
+	int obter_pontos(size_t);
 };

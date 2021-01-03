@@ -4,9 +4,9 @@
 
 class Controlador_Interface {
 private:
-	static bool s_f2_prod_ouro;
-	static bool s_f3_mil_tec;
 	Jogo *jogo;
+	bool s_f2_prod_ouro;
+	bool s_f3_mil_tec;
 public:
 	Controlador_Interface();
 	~Controlador_Interface();
@@ -27,7 +27,7 @@ public:
 	void cmd_modifica(const std::string, const int);
 	void cmd_fevento(const std::string);
 	void ler_cmd(std::string);
+	void mostra_lista_peq();
 	void inicia();
 	std::vector<std::string> stringSplit(const std::string str_to_split, const std::string delimiter);
 };
-

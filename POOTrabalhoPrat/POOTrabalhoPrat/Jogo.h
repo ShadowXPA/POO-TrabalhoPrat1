@@ -43,11 +43,12 @@ public:
 	int get_fator_sorte();
 	bool &get_jogo_a_correr();
 	void incrementa_fase();
-	void conquistar_passar();
+	//void conquistar_passar();
 	void recolha_produtos_ouro();
-	void compra_unidades();
+	//void compra_unidades();
 	void occorencia_evento();
 	void termina_turno();
 	void get_evento_string();
 	void set_proximo_evento(int);
+	int get_pontuacao();
 };

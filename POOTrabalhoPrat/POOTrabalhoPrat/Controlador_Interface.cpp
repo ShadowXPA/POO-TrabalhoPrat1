@@ -3,6 +3,8 @@
 using namespace std;
 
 Controlador_Interface::Controlador_Interface() {
+	this->s_f2_prod_ouro = false;
+	this->s_f3_mil_tec = false;
 	this->jogo = new Jogo();
 }
 
@@ -62,11 +64,7 @@ void Controlador_Interface::cmd_carrega(const string nome_fich) {
 
 void Controlador_Interface::cmd_lista(const string nome) {
 	if (nome.compare("") == 0) {
-		cout << "Ano: " << this->jogo->get_ano();
-		cout << "\nTurno: " << this->jogo->get_turno();
-		cout << "\nFase: " << this->jogo->get_fase();
-		cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
-		cout << "\n------------------";
+		this->mostra_lista_peq();
 		cout << "\nTerritorios conquistados:";
 		this->jogo->mostra_territorios_imperio();
 		cout << "\nTerritorios nao conquistados:";
@@ -77,7 +75,6 @@ void Controlador_Interface::cmd_lista(const string nome) {
 		//Força militar(valor atual, valor máximo)
 		//Tecnologias existentes(nome, preço, resumo do objetivo, adquirida / não adquirida)
 		//Evento que vai ocorrer(nome, resumo dos efeitos)
-		//Pontuação final
 	} else {
 		this->jogo->mostra_territorio(nome);
 	}
@@ -132,7 +129,7 @@ void Controlador_Interface::cmd_avanca() {
 		{
 			// Recolha de produtos e ouro
 			// Adquirir produtos e ouro de cada território
-			this->jogo->get_mundo()->get_imperio()->adquire_prod_ouro();
+			this->jogo->recolha_produtos_ouro();
 			// Permitir a leitura de mais comandos se o império tiver a tecnologia "Bolsa de Valores"
 			if (!this->jogo->get_mundo()->get_imperio()->adquiriu_tecnologia("bolsavalores")) {
 				this->ler_cmd("avanca");
@@ -293,9 +290,21 @@ void Controlador_Interface::ler_cmd(string comando) {
 	}
 }
 
+void Controlador_Interface::mostra_lista_peq() {
+	cout << "\nAno: " << this->jogo->get_ano();
+	cout << "\nTurno: " << this->jogo->get_turno();
+	cout << "\nFase: " << this->jogo->get_fase();
+	cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
+	cout << "\nPontuacao: " << this->jogo->get_pontuacao();
+	cout << "\nProximo evento: ";
+	this->jogo->get_evento_string();
+	cout << "\n------------------";
+}
+
 void Controlador_Interface::inicia() {
 	this->ler_cmd("carrega Territorios.txt");
 	while (this->jogo->get_jogo_a_correr()) {
+		this->mostra_lista_peq();
 		string str = "";
 		cout << "\nIntroduza o comando que deseja: ";
 		getline(cin, str);

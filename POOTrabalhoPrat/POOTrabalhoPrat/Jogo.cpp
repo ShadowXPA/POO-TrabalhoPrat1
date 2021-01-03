@@ -67,14 +67,12 @@ bool &Jogo::get_jogo_a_correr() {
 }
 
 void Jogo::incrementa_fase() {
-	this->fase = ++this->fase % 5;
+	this->fase = ++this->fase % 4;
 }
 
-void Jogo::conquistar_passar() {}
-
-void Jogo::recolha_produtos_ouro() {}
-
-void Jogo::compra_unidades() {}
+void Jogo::recolha_produtos_ouro() {
+	this->mundo->get_imperio()->adquire_prod_ouro();
+}
 
 void Jogo::occorencia_evento() {
 	this->evento->efeito(this->get_mundo()->get_imperio(), this->get_ano());
@@ -115,4 +113,8 @@ void Jogo::set_proximo_evento(int i) {
 			this->evento = new Evento();
 			break;
 	}
+}
+
+int Jogo::get_pontuacao() {
+	return this->pontuacao;
 }
