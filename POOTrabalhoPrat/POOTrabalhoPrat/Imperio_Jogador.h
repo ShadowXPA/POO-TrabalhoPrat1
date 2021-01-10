@@ -33,10 +33,12 @@ public:
 	~Imperio_Jogador();
 	void set_armazem_cofre();
 	int get_armazem();
+	void set_armazem(int);
 	void set_armazem();
 	bool maisprod();
 	bool incrementa_armazem(int = 1);
 	int get_cofre();
+	void set_cofre(int);
 	void set_cofre();
 	bool maisouro();
 	bool incrementa_cofre(int = 1);
@@ -50,6 +52,7 @@ public:
 	size_t tamanho_territorios_conquistados();
 	bool pode_adquirir(std::string);
 	bool adquiriu_tecnologia(std::string);
+	bool tomar_tecnologia(std::string);
 	bool adicionar_territorio_conquistado(Territorio *);
 	bool territorio_invadido(const int);
 	void adicionar_territorio_inicial(Territorio_Inicial *);
@@ -57,4 +60,5 @@ public:
 	bool encontra_territorio(Territorio *);
 	void adquire_prod_ouro();
 	int obter_pontos(size_t);
+	bool tomar_territorio(Territorio *);
 };

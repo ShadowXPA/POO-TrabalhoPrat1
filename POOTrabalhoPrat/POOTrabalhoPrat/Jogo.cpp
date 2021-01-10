@@ -10,6 +10,7 @@ Jogo::Jogo() {
 	this->jogo_a_correr = true;
 	this->mundo = new Mundo();
 	this->mundo->adicionar_territorio_inicial(new Territorio_Inicial());
+	this->evento = nullptr;
 	this->set_proximo_evento(this->mundo->get_imperio()->gerar_fator_sorte(0, 3));
 }
 
@@ -47,7 +48,7 @@ void Jogo::mostra_territorios_nao_conquistados() {
 }
 
 float Jogo::get_ano() {
-	return turno / 6.0f;
+	return (turno / 6.0f) + 1;
 }
 
 int Jogo::get_turno() {
@@ -76,11 +77,12 @@ void Jogo::recolha_produtos_ouro() {
 
 void Jogo::occorencia_evento() {
 	this->evento->efeito(this->get_mundo()->get_imperio(), this->get_ano());
+	this->set_proximo_evento(this->mundo->get_imperio()->gerar_fator_sorte(0, 3));
 }
 
 void Jogo::termina_turno() {
 	this->pontuacao = this->mundo->get_imperio()->obter_pontos(this->mundo->get_num_territorios());
-	if (this->get_ano() == 2.0f) {
+	if (this->get_ano() == 3.0f) {
 		this->jogo_a_correr = false;
 	}
 }
@@ -92,6 +94,7 @@ void Jogo::get_evento_string() {
 }
 
 void Jogo::set_proximo_evento(int i) {
+	delete this->evento;
 	switch (i) {
 		case 1:
 		{

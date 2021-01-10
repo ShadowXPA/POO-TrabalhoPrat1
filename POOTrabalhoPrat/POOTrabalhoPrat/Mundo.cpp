@@ -46,6 +46,22 @@ bool Mundo::conquistar_territorio(string nome) {
 	return false;
 }
 
+bool Mundo::tomar_territorio(std::string nome) {
+	string aux;
+	for (int i = 0; i < this->territorios.size(); i++) {
+		aux = this->territorios[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (aux.compare(nome) == 0) {
+			return this->territorios[i]->tomar_posse(*this->get_imperio());
+		}
+	}
+	return false;
+}
+
+bool Mundo::tomar_tecnologia(std::string tecnologia) {
+	return this->imperio->tomar_tecnologia(tecnologia);
+}
+
 void Mundo::mostra_territorios_imperio() {
 	this->imperio->mostra_territorios_conquistados();
 }

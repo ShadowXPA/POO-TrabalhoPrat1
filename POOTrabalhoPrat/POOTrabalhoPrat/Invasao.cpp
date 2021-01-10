@@ -10,7 +10,7 @@ Invasao::~Invasao() {}
 void Invasao::efeito(Imperio_Jogador *const imp, const float ano) {
 	Evento::efeito(imp, ano);
 	int fator_sorte = imp->gerar_fator_sorte();
-	fator_sorte += ano == 2.0f ? 2 : 3;
+	fator_sorte += ano < 2.0f ? 2 : 3;
 	bool invadido = imp->territorio_invadido(fator_sorte);
 	cout << (invadido ? "Territorio invadido" : "Territorio nao invadido") << endl;
 }

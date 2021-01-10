@@ -32,6 +32,10 @@ int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
+void Imperio_Jogador::set_armazem(int n) {
+	this->armazem = n;
+}
+
 void Imperio_Jogador::set_armazem() {
 	if (this->adquiriu_tecnologia("bancocentral"))
 		this->max_armazem = 5;
@@ -55,6 +59,10 @@ bool Imperio_Jogador::incrementa_armazem(int i) {
 
 int Imperio_Jogador::get_cofre() {
 	return this->cofre;
+}
+
+void Imperio_Jogador::set_cofre(int n) {
+	this->cofre = n;
 }
 
 void Imperio_Jogador::set_cofre() {
@@ -147,15 +155,24 @@ bool Imperio_Jogador::adquiriu_tecnologia(std::string tecnologia) {
 	return false;
 }
 
+bool Imperio_Jogador::tomar_tecnologia(std::string tecnologia) {
+	string aux;
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		aux = this->tecnologias[i]->get_nome();
+		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
+		if (aux.compare(tecnologia) == 0) {
+			return this->tecnologias[i]->tomar();
+		}
+	}
+	return false;
+}
+
 bool Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	this->fator_sorte = this->gerar_fator_sorte();
 	this->fator_sorte += this->forca_militar;
 
 	if (this->fator_sorte >= ter->get_resistencia()) {
-		if (!this->encontra_territorio(ter)) {
-			this->territorios_conquistados.push_back(ter);
-			return true;
-		}
+		return this->tomar_territorio(ter);
 	} else {
 		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
 	}
@@ -216,4 +233,12 @@ int Imperio_Jogador::obter_pontos(size_t num_ter) {
 	}
 	tmp += tec >= 5 ? tec + 1 : tec;
 	return tmp;
+}
+
+bool Imperio_Jogador::tomar_territorio(Territorio *ter) {
+	if (!this->encontra_territorio(ter)) {
+		this->territorios_conquistados.push_back(ter);
+		return true;
+	}
+	return false;
 }

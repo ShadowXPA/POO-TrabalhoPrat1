@@ -17,5 +17,6 @@ public:
 	std::string get_objetivo();
 	int get_custo();
 	bool ja_adquirido();
+	bool tomar();
 	virtual bool comprar(Imperio_Jogador &);
 };

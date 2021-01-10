@@ -168,11 +168,43 @@ void Controlador_Interface::cmd_ativa(const std::string) {}
 
 void Controlador_Interface::cmd_apaga(const std::string) {}
 
-void Controlador_Interface::cmd_toma(const std::string, const std::string) {}
+void Controlador_Interface::cmd_toma(const std::string qual, const std::string nome) {
+	if (qual.compare("terr") == 0) {
+		if (this->jogo->get_mundo()->tomar_territorio(nome)) {
+			cout << "Tomada a posse do territorio" << endl;
+		} else {
+			cout << "Nao foi possivel tomar posse do territorio" << endl;
+		}
+	} else if (qual.compare("tec") == 0) {
+		if (this->jogo->get_mundo()->tomar_tecnologia(nome)) {
+			cout << "Tomada a posse da tecnologia" << endl;
+		} else {
+			cout << "Nao foi possivel tomar posse da tecnologia" << endl;
+		}
+	}
+}
 
-void Controlador_Interface::cmd_modifica(const std::string, const int) {}
+void Controlador_Interface::cmd_modifica(const std::string recurso, const int n) {
+	if (recurso.compare("ouro") == 0) {
+		this->jogo->get_mundo()->get_imperio()->set_cofre(n);
+		cout << "Modificado a quantidade de ouro" << endl;
+	} else if (recurso.compare("prod") == 0) {
+		this->jogo->get_mundo()->get_imperio()->set_armazem(n);
+		cout << "Modificado a quantidade de produtos" << endl;
+	}
+}
 
-void Controlador_Interface::cmd_fevento(const std::string) {}
+void Controlador_Interface::cmd_fevento(const std::string evento) {
+	if (evento.compare("sem") == 0) {
+		this->jogo->set_proximo_evento(0);
+	} else if (evento.compare("alianca") == 0) {
+		this->jogo->set_proximo_evento(1);
+	} else if (evento.compare("invasao") == 0) {
+		this->jogo->set_proximo_evento(2);
+	} else if (evento.compare("recurso") == 0) {
+		this->jogo->set_proximo_evento(3);
+	}
+}
 
 void Controlador_Interface::ler_cmd(string comando) {
 	transform(comando.begin(), comando.end(), comando.begin(), ::tolower);

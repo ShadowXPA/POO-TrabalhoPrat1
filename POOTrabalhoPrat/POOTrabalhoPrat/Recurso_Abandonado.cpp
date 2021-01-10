@@ -7,9 +7,9 @@ Recurso_Abandonado::~Recurso_Abandonado() {}
 
 void Recurso_Abandonado::efeito(Imperio_Jogador *const imp, const float ano) {
 	Evento::efeito(imp, ano);
-	if (ano == 1.0f) {
+	if (ano < 2.0f) {
 		imp->incrementa_armazem();
-	} else if (ano == 2.0f) {
+	} else {
 		imp->incrementa_cofre();
 	}
 }

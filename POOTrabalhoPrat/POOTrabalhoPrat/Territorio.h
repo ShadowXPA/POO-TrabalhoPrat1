@@ -22,4 +22,5 @@ public:
 	virtual void set_criacao_produtos(int) = 0;
 	virtual void set_criacao_ouro(int) = 0;
 	virtual bool ser_conquistado(Imperio_Jogador &) = 0;
+	bool tomar_posse(Imperio_Jogador &);
 };

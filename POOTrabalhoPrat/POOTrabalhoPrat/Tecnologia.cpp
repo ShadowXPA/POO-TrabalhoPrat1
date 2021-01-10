@@ -28,10 +28,18 @@ bool Tecnologia::ja_adquirido() {
 	return this->adquirido;
 }
 
-bool Tecnologia::comprar(Imperio_Jogador &imp) {
-	if (!this->adquirido && imp.get_cofre() >= this->custo) {
-		imp.decrementar_cofre(this->custo);
+bool Tecnologia::tomar() {
+	if (!this->adquirido) {
 		this->adquirido = true;
+		return true;
+	}
+	return false;
+}
+
+bool Tecnologia::comprar(Imperio_Jogador &imp) {
+	if (imp.get_cofre() >= this->custo) {
+		imp.decrementar_cofre(this->custo);
+		this->tomar();
 		return true;
 	}
 	return false;

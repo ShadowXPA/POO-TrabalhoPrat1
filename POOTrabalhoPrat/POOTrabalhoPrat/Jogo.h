@@ -32,9 +32,9 @@ public:
 	~Jogo();
 	Mundo *const get_mundo();
 	Evento *const get_evento();
-	void adicionar_territorio(Territorio *ter);
-	bool conquistar_territorio(std::string territorio);
-	void mostra_territorio(std::string territorio);
+	void adicionar_territorio(Territorio *);
+	bool conquistar_territorio(std::string);
+	void mostra_territorio(std::string);
 	void mostra_territorios_imperio();
 	void mostra_territorios_nao_conquistados();
 	float get_ano();

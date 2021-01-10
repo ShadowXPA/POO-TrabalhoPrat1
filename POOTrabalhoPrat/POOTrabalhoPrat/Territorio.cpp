@@ -1,4 +1,5 @@
 #include "Territorio.h"
+#include "Imperio_Jogador.h"
 
 using namespace std;
 
@@ -30,4 +31,8 @@ int Territorio::get_criacao_produtos() {
 
 int Territorio::get_criacao_ouro() {
 	return this->criacao_ouro;
+}
+
+bool Territorio::tomar_posse(Imperio_Jogador &imp) {
+	return imp.tomar_territorio(this);
 }
