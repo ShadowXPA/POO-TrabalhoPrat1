@@ -17,6 +17,22 @@ Imperio_Jogador::Imperio_Jogador() {
 	this->tecnologias.push_back(new Misseis_Teleguiados());
 }
 
+Imperio_Jogador::Imperio_Jogador(Imperio_Jogador &imp) {
+	this->armazem = imp.armazem;
+	this->max_armazem = imp.max_armazem;
+	this->cofre = imp.cofre;
+	this->max_cofre = imp.max_cofre;
+	this->forca_militar = imp.forca_militar;
+	this->max_forca_militar = imp.max_forca_militar;
+	this->fator_sorte = imp.fator_sorte;
+	for (int i = 0; i < imp.territorios_conquistados.size(); i++) {
+		// fudeu
+	}
+	for (int i = 0; i < imp.tecnologias.size(); i++) {
+		// ???
+	}
+}
+
 Imperio_Jogador::~Imperio_Jogador() {
 	for (int i = 0; i < this->tecnologias.size(); i++) {
 		delete this->tecnologias[i];

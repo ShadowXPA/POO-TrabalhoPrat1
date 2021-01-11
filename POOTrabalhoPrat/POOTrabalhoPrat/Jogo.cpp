@@ -14,6 +14,15 @@ Jogo::Jogo() {
 	this->set_proximo_evento(this->mundo->get_imperio()->gerar_fator_sorte(0, 3));
 }
 
+Jogo::Jogo(Jogo &jogo) {
+	this->turno = jogo.turno;
+	this->pontuacao = jogo.pontuacao;
+	this->jogo_a_correr = jogo.jogo_a_correr;
+	this->fase = jogo.fase;
+	this->mundo = new Mundo(*jogo.mundo);
+	this->evento = new Evento(*jogo.evento);
+}
+
 Jogo::~Jogo() {
 	delete this->mundo;
 	delete this->evento;

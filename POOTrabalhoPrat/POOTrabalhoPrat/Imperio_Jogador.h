@@ -30,6 +30,7 @@ private:
 	int fator_sorte;
 public:
 	Imperio_Jogador();
+	Imperio_Jogador(Imperio_Jogador &);
 	~Imperio_Jogador();
 	void set_armazem_cofre();
 	int get_armazem();

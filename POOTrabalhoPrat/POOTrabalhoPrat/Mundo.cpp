@@ -6,6 +6,13 @@ Mundo::Mundo() {
 	this->imperio = new Imperio_Jogador();
 }
 
+Mundo::Mundo(Mundo &mundo) {
+	for (int i = 0; i < mundo.territorios.size(); i++) {
+		//this->territorios.push_back();
+	}
+	this->imperio = new Imperio_Jogador(*mundo.imperio);
+}
+
 Mundo::~Mundo() {
 	delete this->imperio;
 	for (int i = 0; i < this->territorios.size(); i++) {

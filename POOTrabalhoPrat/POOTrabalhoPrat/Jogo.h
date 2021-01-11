@@ -29,6 +29,7 @@ private:
 	void cmd_lista(const string);*/
 public:
 	Jogo();
+	Jogo(Jogo &);
 	~Jogo();
 	Mundo *const get_mundo();
 	Evento *const get_evento();

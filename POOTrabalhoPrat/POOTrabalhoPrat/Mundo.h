@@ -9,6 +9,7 @@ private:
 	std::vector<Territorio *> territorios;
 public:
 	Mundo();
+	Mundo(Mundo &);
 	~Mundo();
 	Imperio_Jogador* const get_imperio();
 	int get_fator_sorte();

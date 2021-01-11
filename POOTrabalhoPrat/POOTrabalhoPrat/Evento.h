@@ -10,6 +10,7 @@ protected:
 	std::string descricao;
 public:
 	Evento();
+	Evento(Evento &);
 	Evento(std::string, std::string);
 	~Evento();
 	std::string get_nome();

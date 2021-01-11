@@ -10,6 +10,9 @@ Controlador_Interface::Controlador_Interface() {
 
 Controlador_Interface::~Controlador_Interface() {
 	delete this->jogo;
+	for (int i = 0; i < this->jogos.size(); i++) {
+		delete this->jogos[i];
+	}
 }
 
 void Controlador_Interface::cmd_cria(string tipo, const int n) {

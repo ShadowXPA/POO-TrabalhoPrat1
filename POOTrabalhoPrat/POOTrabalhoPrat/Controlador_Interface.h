@@ -5,6 +5,7 @@
 class Controlador_Interface {
 private:
 	Jogo *jogo;
+	std::vector<Jogo *> jogos;
 	bool s_f2_prod_ouro;
 	bool s_f3_mil_tec;
 public:
