@@ -12,6 +12,7 @@ private:
 	bool adquirido;
 public:
 	Tecnologia(std::string, std::string, int);
+	Tecnologia(Tecnologia &);
 	~Tecnologia();
 	std::string get_nome();
 	std::string get_objetivo();
@@ -19,4 +20,5 @@ public:
 	bool ja_adquirido();
 	bool tomar();
 	virtual bool comprar(Imperio_Jogador &);
+	virtual Tecnologia *novo() = 0;
 };

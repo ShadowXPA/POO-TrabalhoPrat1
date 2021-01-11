@@ -9,6 +9,8 @@ Continente::Continente(string nome, int resistencia, int criacao_produtos, int c
 	this->nome += to_string(s_count);
 }
 
+Continente::Continente(Continente &ter) : Territorio(ter) {}
+
 Continente::~Continente() {}
 
 bool Continente::ser_conquistado(Imperio_Jogador &imp) {

@@ -20,7 +20,7 @@ Jogo::Jogo(Jogo &jogo) {
 	this->jogo_a_correr = jogo.jogo_a_correr;
 	this->fase = jogo.fase;
 	this->mundo = new Mundo(*jogo.mundo);
-	this->evento = new Evento(*jogo.evento);
+	this->evento = jogo.evento->novo();
 }
 
 Jogo::~Jogo() {

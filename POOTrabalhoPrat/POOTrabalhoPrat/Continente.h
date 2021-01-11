@@ -5,6 +5,8 @@
 class Continente : public Territorio {
 public:
 	Continente(std::string, int, int, int);
+	Continente(Continente &);
 	~Continente();
 	bool ser_conquistado(Imperio_Jogador &) override;
+	Territorio *novo() = 0;
 };

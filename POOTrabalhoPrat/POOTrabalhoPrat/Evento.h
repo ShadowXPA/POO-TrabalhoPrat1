@@ -16,4 +16,5 @@ public:
 	std::string get_nome();
 	std::string get_descricao();
 	virtual void efeito(Imperio_Jogador *const, const float);
+	virtual Evento *novo();
 };

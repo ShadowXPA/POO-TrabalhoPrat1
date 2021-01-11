@@ -51,6 +51,7 @@ public:
 	int get_fator_sorte();
 	int gerar_fator_sorte(int = 1, int = 6);
 	size_t tamanho_territorios_conquistados();
+	std::string get_nome_territorio_conquistado(size_t);
 	bool pode_adquirir(std::string);
 	bool adquiriu_tecnologia(std::string);
 	bool tomar_tecnologia(std::string);

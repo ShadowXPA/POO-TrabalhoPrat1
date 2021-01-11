@@ -25,11 +25,8 @@ Imperio_Jogador::Imperio_Jogador(Imperio_Jogador &imp) {
 	this->forca_militar = imp.forca_militar;
 	this->max_forca_militar = imp.max_forca_militar;
 	this->fator_sorte = imp.fator_sorte;
-	for (int i = 0; i < imp.territorios_conquistados.size(); i++) {
-		// fudeu
-	}
 	for (int i = 0; i < imp.tecnologias.size(); i++) {
-		// ???
+		this->tecnologias.push_back(imp.tecnologias[i]->novo());
 	}
 }
 
@@ -146,6 +143,9 @@ size_t Imperio_Jogador::tamanho_territorios_conquistados() {
 	return this->territorios_conquistados.size();
 }
 
+std::string Imperio_Jogador::get_nome_territorio_conquistado(size_t i) {
+	return this->territorios_conquistados[i]->get_nome();
+}
 
 bool Imperio_Jogador::pode_adquirir(std::string tipo) {
 	string aux;

@@ -149,6 +149,7 @@
     <ClCompile Include="Duna.cpp" />
     <ClCompile Include="Evento.cpp" />
     <ClCompile Include="Fortaleza.cpp" />
+    <ClCompile Include="Gravacao.cpp" />
     <ClCompile Include="Ilha.cpp" />
     <ClCompile Include="Imperio_Jogador.cpp" />
     <ClCompile Include="Controlador_Interface.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Duna.h" />
     <ClInclude Include="Evento.h" />
     <ClInclude Include="Fortaleza.h" />
+    <ClInclude Include="Gravacao.h" />
     <ClInclude Include="Ilha.h" />
     <ClInclude Include="Imperio_Jogador.h" />
     <ClInclude Include="Controlador_Interface.h" />

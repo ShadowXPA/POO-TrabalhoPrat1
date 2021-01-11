@@ -30,3 +30,7 @@ std::string Evento::get_descricao() {
 void Evento::efeito(Imperio_Jogador *const imp, const float ano) {
 	cout << this->descricao << endl;
 }
+
+Evento *Evento::novo() {
+	return new Evento(*this);
+}

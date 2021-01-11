@@ -8,9 +8,12 @@ Mundo::Mundo() {
 
 Mundo::Mundo(Mundo &mundo) {
 	for (int i = 0; i < mundo.territorios.size(); i++) {
-		//this->territorios.push_back();
+		this->territorios.push_back(mundo.territorios[i]->novo());
 	}
 	this->imperio = new Imperio_Jogador(*mundo.imperio);
+	for (int i = 0; i < mundo.get_imperio()->tamanho_territorios_conquistados(); i++) {
+		this->tomar_territorio(mundo.get_imperio()->get_nome_territorio_conquistado(i));
+	}
 }
 
 Mundo::~Mundo() {

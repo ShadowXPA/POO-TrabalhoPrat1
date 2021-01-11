@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Jogo.h"
+#include "Gravacao.h"
 
 class Controlador_Interface {
 private:
 	Jogo *jogo;
-	std::vector<Jogo *> jogos;
+	std::vector<Gravacao *> gravacoes;
 	bool s_f2_prod_ouro;
 	bool s_f3_mil_tec;
 public:

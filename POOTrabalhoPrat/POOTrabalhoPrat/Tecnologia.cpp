@@ -10,6 +10,13 @@ Tecnologia::Tecnologia(string nome, string objetivo, int custo) {
 	this->adquirido = false;
 }
 
+Tecnologia::Tecnologia(Tecnologia &tec) {
+	this->nome = tec.nome;
+	this->objetivo = tec.objetivo;
+	this->custo = tec.custo;
+	this->adquirido = tec.adquirido;
+}
+
 Tecnologia::~Tecnologia() {}
 
 string Tecnologia::get_nome() {

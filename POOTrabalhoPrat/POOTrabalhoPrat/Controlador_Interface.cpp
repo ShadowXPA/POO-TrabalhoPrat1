@@ -10,8 +10,8 @@ Controlador_Interface::Controlador_Interface() {
 
 Controlador_Interface::~Controlador_Interface() {
 	delete this->jogo;
-	for (int i = 0; i < this->jogos.size(); i++) {
-		delete this->jogos[i];
+	for (int i = 0; i < this->gravacoes.size(); i++) {
+		delete this->gravacoes[i];
 	}
 }
 
@@ -165,11 +165,40 @@ void Controlador_Interface::cmd_avanca() {
 	}
 }
 
-void Controlador_Interface::cmd_grava(const std::string) {}
+void Controlador_Interface::cmd_grava(const std::string nome) {
+	for (int i = 0; i < this->gravacoes.size(); i++) {
+		if (nome.compare(this->gravacoes[i]->get_nome()) == 0) {
+			cout << "Nome da gravacao ja existe!" << endl;
+			return;
+		}
+	}
+	this->gravacoes.push_back(new Gravacao(nome, *this->jogo));
+	cout << "Jogo gravado com sucesso!" << endl;
+}
 
-void Controlador_Interface::cmd_ativa(const std::string) {}
+void Controlador_Interface::cmd_ativa(const std::string nome) {
+	for (int i = 0; i < this->gravacoes.size(); i++) {
+		if (nome.compare(this->gravacoes[i]->get_nome()) == 0) {
+			delete this->jogo;
+			this->jogo = new Jogo(*this->gravacoes[i]->get_jogo());
+			cout << "Jogo ativado com sucesso!" << endl;
+			return;
+		}
+	}
+	cout << "Nao foi encontrado nenhuma gravacao com esse nome!" << endl;
+}
 
-void Controlador_Interface::cmd_apaga(const std::string) {}
+void Controlador_Interface::cmd_apaga(const std::string nome) {
+	for (int i = 0; i < this->gravacoes.size(); i++) {
+		if (nome.compare(this->gravacoes[i]->get_nome()) == 0) {
+			delete this->gravacoes[i]->get_jogo();
+			this->gravacoes.erase(this->gravacoes.begin() + i);
+			cout << "Jogo apagado!" << endl;
+			return;
+		}
+	}
+	cout << "Jogo nao encontrado!" << endl;
+}
 
 void Controlador_Interface::cmd_toma(const std::string qual, const std::string nome) {
 	if (qual.compare("terr") == 0) {
@@ -303,8 +332,10 @@ void Controlador_Interface::ler_cmd(string comando) {
 			return;
 		cmd_grava(str[1]);
 	} else if (str[0].compare("ativa") == 0) {
-		if (str.size() < 2)
+		if (str.size() < 2) {
+			// TODO: Mostrar todos as gravações
 			return;
+		}
 		cmd_ativa(str[1]);
 	} else if (str[0].compare("apaga") == 0) {
 		if (str.size() < 2)
@@ -345,7 +376,8 @@ void Controlador_Interface::inicia() {
 		getline(cin, str);
 		this->ler_cmd(str);
 	}
-	// TODO: Mostrar resultados finais...
+	cout << endl << "FIM DO JOGO!!!" << endl;
+	this->mostra_lista_peq();
 }
 
 vector<string> Controlador_Interface::stringSplit(const string str_to_split, const string delimiter) {

@@ -3,6 +3,8 @@
 
 Banco_Central::Banco_Central() : Tecnologia("BancoCentral", "Esta tecnologia permite aumentar em duas unidades a capacidade de armazenamento do armazem e do cofre do imperio.", 3) {}
 
+Banco_Central::Banco_Central(Banco_Central &tec) : Tecnologia(tec) {}
+
 Banco_Central::~Banco_Central() {}
 
 bool Banco_Central::comprar(Imperio_Jogador &imp) {
@@ -11,4 +13,8 @@ bool Banco_Central::comprar(Imperio_Jogador &imp) {
 		return true;
 	}
 	return false;
+}
+
+Tecnologia *Banco_Central::novo() {
+	return new Banco_Central(*this);
 }
