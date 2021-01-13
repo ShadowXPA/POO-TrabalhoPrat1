@@ -45,6 +45,10 @@ int Imperio_Jogador::get_armazem() {
 	return this->armazem;
 }
 
+int Imperio_Jogador::get_max_armazem() {
+	return this->max_armazem;
+}
+
 void Imperio_Jogador::set_armazem(int n) {
 	this->armazem = n;
 }
@@ -72,6 +76,10 @@ bool Imperio_Jogador::incrementa_armazem(int i) {
 
 int Imperio_Jogador::get_cofre() {
 	return this->cofre;
+}
+
+int Imperio_Jogador::get_max_cofre() {
+	return this->max_cofre;
 }
 
 void Imperio_Jogador::set_cofre(int n) {
@@ -107,6 +115,10 @@ void Imperio_Jogador::decrementar_cofre(int i) {
 
 int Imperio_Jogador::get_forca_militar() {
 	return this->forca_militar;
+}
+
+int Imperio_Jogador::get_max_forca_militar() {
+	return this->max_forca_militar;
 }
 
 void Imperio_Jogador::set_forca_militar() {
@@ -183,6 +195,16 @@ bool Imperio_Jogador::tomar_tecnologia(std::string tecnologia) {
 	return false;
 }
 
+void Imperio_Jogador::mostrar_tecnologias() {
+	for (int i = 0; i < this->tecnologias.size(); i++) {
+		cout << "\nNome: " << this->tecnologias[i]->get_nome();
+		cout << "\nCusto: " << this->tecnologias[i]->get_custo();
+		cout << "\nObjetivo: " << this->tecnologias[i]->get_objetivo();
+		cout << "\nAdquirido: " << (this->tecnologias[i]->ja_adquirido() ? "sim" : "nao");
+		cout << "\n------------------";
+	}
+}
+
 bool Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	this->fator_sorte = this->gerar_fator_sorte();
 	this->fator_sorte += this->forca_militar;
@@ -190,7 +212,7 @@ bool Imperio_Jogador::adicionar_territorio_conquistado(Territorio *ter) {
 	if (this->fator_sorte >= ter->get_resistencia()) {
 		return this->tomar_territorio(ter);
 	} else {
-		this->forca_militar -= (this->forca_militar <= 1) ? 0 : 1;
+		this->forca_militar -= (this->forca_militar <= 0) ? 0 : 1;
 	}
 	return false;
 }
@@ -235,6 +257,18 @@ void Imperio_Jogador::adquire_prod_ouro() {
 		j += incrementa_armazem(ter->get_criacao_produtos()) ? 0 : 1;
 		j += incrementa_cofre(ter->get_criacao_ouro()) ? 0 : 1;
 	}
+}
+
+int *Imperio_Jogador::possibilidade_adquirir_prod_ouro() {
+	int *temp = new int[2];
+	*(temp + 0) = 0;
+	*(temp + 1) = 0;
+	for (int i = 0; i < this->territorios_conquistados.size(); i++) {
+		auto ter = this->territorios_conquistados[i];
+		*(temp + 0) += ter->get_criacao_produtos();
+		*(temp + 1) += ter->get_criacao_ouro();
+	}
+	return temp;
 }
 
 int Imperio_Jogador::obter_pontos(size_t num_ter) {

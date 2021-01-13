@@ -50,6 +50,7 @@ void Controlador_Interface::cmd_conquista(const string nome) {
 	} else {
 		cout << "\nImpossivel aquirir o territorio que desejava!\n";
 	}
+	this->ler_cmd("avanca");
 }
 
 void Controlador_Interface::cmd_carrega(const string nome_fich) {
@@ -72,12 +73,20 @@ void Controlador_Interface::cmd_lista(const string nome) {
 		this->jogo->mostra_territorios_imperio();
 		cout << "\nTerritorios nao conquistados:";
 		this->jogo->mostra_territorios_nao_conquistados();
-		//TODO
-		//Produtos (valor em armazém, valor máximo, produção no turno atual)
-		//Ouro(valor em armazém, valor máximo, produção no turno atual)
-		//Força militar(valor atual, valor máximo)
-		//Tecnologias existentes(nome, preço, resumo do objetivo, adquirida / não adquirida)
-		//Evento que vai ocorrer(nome, resumo dos efeitos)
+		cout << endl << "Produtos: " << this->jogo->get_mundo()->get_imperio()->get_armazem();
+		cout << endl << "Maximo produtos: " << this->jogo->get_mundo()->get_imperio()->get_max_armazem();
+		int *prod_ouro = this->jogo->get_mundo()->get_imperio()->possibilidade_adquirir_prod_ouro();
+		cout << endl << "Producao de produtos: " << prod_ouro[0];
+		cout << endl << "Ouro: " << this->jogo->get_mundo()->get_imperio()->get_cofre();
+		cout << endl << "Maximo ouro: " << this->jogo->get_mundo()->get_imperio()->get_max_cofre();
+		cout << endl << "Producao de ouro: " << prod_ouro[1];
+		delete prod_ouro;
+		cout << endl << "Forca militar: " << this->jogo->get_mundo()->get_imperio()->get_forca_militar();
+		cout << endl << "Maximo forca militar: " << this->jogo->get_mundo()->get_imperio()->get_max_forca_militar();
+		cout << "\n------------------";
+		this->jogo->get_mundo()->get_imperio()->mostrar_tecnologias();
+		cout << "\nProximo evento: ";
+		this->jogo->get_evento_string();
 	} else {
 		this->jogo->mostra_territorio(nome);
 	}
@@ -125,11 +134,13 @@ void Controlador_Interface::cmd_avanca() {
 	switch (this->jogo->get_fase()) {
 		case 0:
 		{
+			cout << endl << "Fase: Conquistar/Passar" << endl;
 			// Conquistar / Passar
 			break;
 		}
 		case 1:
 		{
+			cout << endl << "Fase: Recolha de produtos e ouro" << endl;
 			// Recolha de produtos e ouro
 			// Adquirir produtos e ouro de cada território
 			this->jogo->recolha_produtos_ouro();
@@ -143,6 +154,7 @@ void Controlador_Interface::cmd_avanca() {
 		}
 		case 2:
 		{
+			cout << endl << "Fase: Compra de unidades militares e tecnologia" << endl;
 			// Compra de unidades militares e tecnologia
 			// Uma vez por turno
 			s_f3_mil_tec = false;
@@ -150,6 +162,7 @@ void Controlador_Interface::cmd_avanca() {
 		}
 		case 3:
 		{
+			cout << endl << "Fase: Eventos" << endl;
 			// Fase de Eventos
 			// Ativar o Evento e escolher o próximo evento
 			this->jogo->occorencia_evento();
@@ -333,7 +346,9 @@ void Controlador_Interface::ler_cmd(string comando) {
 		cmd_grava(str[1]);
 	} else if (str[0].compare("ativa") == 0) {
 		if (str.size() < 2) {
-			// TODO: Mostrar todos as gravações
+			for (int i = 0; i < this->gravacoes.size(); i++) {
+				cout << endl << this->gravacoes[i]->get_nome();
+			}
 			return;
 		}
 		cmd_ativa(str[1]);
@@ -362,8 +377,6 @@ void Controlador_Interface::mostra_lista_peq() {
 	cout << "\nFase: " << this->jogo->get_fase();
 	cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
 	cout << "\nPontuacao: " << this->jogo->get_pontuacao();
-	cout << "\nProximo evento: ";
-	this->jogo->get_evento_string();
 	cout << "\n------------------";
 }
 
