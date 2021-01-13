@@ -68,4 +68,5 @@ public:
 	int* possibilidade_adquirir_prod_ouro();
 	int obter_pontos(size_t);
 	bool tomar_territorio(Territorio *);
+	void verifica_turno(int);
 };

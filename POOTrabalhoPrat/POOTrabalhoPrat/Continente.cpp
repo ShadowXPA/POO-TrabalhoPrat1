@@ -13,6 +13,6 @@ Continente::Continente(Continente &ter) : Territorio(ter) {}
 
 Continente::~Continente() {}
 
-bool Continente::ser_conquistado(Imperio_Jogador &imp) {
+bool Continente::ser_conquistado(Imperio_Jogador &imp, int = 0) {
 	return imp.adicionar_territorio_conquistado(this);
 }

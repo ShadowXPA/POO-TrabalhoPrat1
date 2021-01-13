@@ -41,7 +41,7 @@ void Jogo::adicionar_territorio(Territorio *ter) {
 }
 
 bool Jogo::conquistar_territorio(string territorio) {
-	return this->mundo->conquistar_territorio(territorio);
+	return this->mundo->conquistar_territorio(territorio, this->turno);
 }
 
 void Jogo::mostra_territorio(string territorio) {
@@ -81,6 +81,7 @@ void Jogo::incrementa_fase() {
 }
 
 void Jogo::recolha_produtos_ouro() {
+	this->mundo->get_imperio()->verifica_turno(this->turno);
 	this->mundo->get_imperio()->adquire_prod_ouro();
 }
 

@@ -6,7 +6,11 @@ Planicie::Planicie(Planicie &ter) : Continente(ter) {}
 
 Planicie::~Planicie() {}
 
-void Planicie::set_criacao_produtos(int) {}
+void Planicie::set_criacao_produtos(int turno) {
+    if (turno >= 6) {
+        this->criacao_produtos = 2;
+    }
+}
 
 void Planicie::set_criacao_ouro(int) {}
 

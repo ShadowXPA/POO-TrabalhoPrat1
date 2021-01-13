@@ -28,7 +28,7 @@ void Controlador_Interface::cmd_cria(string tipo, const int n) {
 		} else if (tipo.compare("mina") == 0) {
 			this->jogo->adicionar_territorio(new Mina());
 		} else if (tipo.compare("montanha") == 0) {
-			this->jogo->adicionar_territorio(new Montanha());
+			this->jogo->adicionar_territorio(new Montanha(this->jogo->get_turno()));
 		} else if (tipo.compare("planicie") == 0) {
 			this->jogo->adicionar_territorio(new Planicie());
 		} else if (tipo.compare("pescaria") == 0) {
@@ -119,7 +119,6 @@ void Controlador_Interface::cmd_adquire(const string tipo) {
 
 void Controlador_Interface::cmd_avanca() {
 	this->jogo->incrementa_fase();
-	// TODO verificar a fase e executar fases automáticas (exemplo: fase de eventos)
 	switch (this->jogo->get_fase()) {
 		case 0:
 		{

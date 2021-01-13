@@ -44,13 +44,13 @@ void Mundo::adicionar_territorio(Territorio *ter) {
 	this->territorios.push_back(ter);
 }
 
-bool Mundo::conquistar_territorio(string nome) {
+bool Mundo::conquistar_territorio(string nome, int turno) {
 	string aux;
 	for (int i = 0; i < this->territorios.size(); i++) {
 		aux = this->territorios[i]->get_nome();
 		transform(aux.begin(), aux.end(), aux.begin(), ::tolower);
 		if (aux.compare(nome) == 0) {
-			return this->territorios[i]->ser_conquistado(*this->get_imperio());
+			return this->territorios[i]->ser_conquistado(*this->get_imperio(), turno);
 		}
 	}
 	return false;

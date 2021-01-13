@@ -16,7 +16,7 @@ public:
 	size_t get_num_territorios();
 	void adicionar_territorio_inicial(Territorio_Inicial *);
 	void adicionar_territorio(Territorio *);
-	bool conquistar_territorio(std::string);
+	bool conquistar_territorio(std::string, int);
 	bool tomar_territorio(std::string);
 	bool tomar_tecnologia(std::string);
 	void mostra_territorios_imperio();

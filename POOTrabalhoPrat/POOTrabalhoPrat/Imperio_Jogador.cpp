@@ -67,11 +67,13 @@ bool Imperio_Jogador::maisprod() {
 }
 
 bool Imperio_Jogador::incrementa_armazem(int i) {
-	if (this->armazem + i <= this->max_armazem) {
-		this->armazem += i;
-		return true;
+	for (int j = 0; j < i; j++) {
+		if (this->armazem + 1 > this->max_armazem) {
+			return false;
+		}
+		this->armazem++;
 	}
-	return false;
+	return true;
 }
 
 int Imperio_Jogador::get_cofre() {
@@ -100,11 +102,13 @@ bool Imperio_Jogador::maisouro() {
 }
 
 bool Imperio_Jogador::incrementa_cofre(int i) {
-	if (this->cofre + i <= this->max_cofre) {
-		this->cofre += i;
-		return true;
+	for (int j = 0; j < i; j++) {
+		if (this->cofre + 1 > this->max_cofre) {
+			return false;
+		}
+		this->cofre++;
 	}
-	return false;
+	return true;
 }
 
 void Imperio_Jogador::decrementar_cofre(int i) {
@@ -291,4 +295,12 @@ bool Imperio_Jogador::tomar_territorio(Territorio *ter) {
 		return true;
 	}
 	return false;
+}
+
+void Imperio_Jogador::verifica_turno(int turno) {
+	for (int i = 0; i < this->territorios_conquistados.size(); i++) {
+		auto ter = this->territorios_conquistados[i];
+		ter->set_criacao_ouro(turno);
+		ter->set_criacao_produtos(turno);
+	}
 }
