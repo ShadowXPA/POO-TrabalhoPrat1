@@ -50,7 +50,6 @@ void Controlador_Interface::cmd_conquista(const string nome) {
 	} else {
 		cout << "\nImpossivel aquirir o territorio que desejava!\n";
 	}
-	this->ler_cmd("avanca");
 }
 
 void Controlador_Interface::cmd_carrega(const string nome_fich) {
@@ -73,16 +72,6 @@ void Controlador_Interface::cmd_lista(const string nome) {
 		this->jogo->mostra_territorios_imperio();
 		cout << "\nTerritorios nao conquistados:";
 		this->jogo->mostra_territorios_nao_conquistados();
-		cout << endl << "Produtos: " << this->jogo->get_mundo()->get_imperio()->get_armazem();
-		cout << endl << "Maximo produtos: " << this->jogo->get_mundo()->get_imperio()->get_max_armazem();
-		int *prod_ouro = this->jogo->get_mundo()->get_imperio()->possibilidade_adquirir_prod_ouro();
-		cout << endl << "Producao de produtos: " << prod_ouro[0];
-		cout << endl << "Ouro: " << this->jogo->get_mundo()->get_imperio()->get_cofre();
-		cout << endl << "Maximo ouro: " << this->jogo->get_mundo()->get_imperio()->get_max_cofre();
-		cout << endl << "Producao de ouro: " << prod_ouro[1];
-		delete prod_ouro;
-		cout << endl << "Forca militar: " << this->jogo->get_mundo()->get_imperio()->get_forca_militar();
-		cout << endl << "Maximo forca militar: " << this->jogo->get_mundo()->get_imperio()->get_max_forca_militar();
 		cout << "\n------------------";
 		this->jogo->get_mundo()->get_imperio()->mostrar_tecnologias();
 		cout << "\nProximo evento: ";
@@ -298,7 +287,7 @@ void Controlador_Interface::ler_cmd(string comando) {
 				s_f2_prod_ouro = true;
 				cmd_maisouro();
 			} else {
-				cout << "\nJa adquiriu ouro neste turno!\n";
+				cout << "\nJa adquiriu ouro ou produtos neste turno!\n";
 			}
 		} else {
 			cout << "\nA segunda fase ja terminou!\n";
@@ -309,13 +298,14 @@ void Controlador_Interface::ler_cmd(string comando) {
 				s_f2_prod_ouro = true;
 				cmd_maisprod();
 			} else {
-				cout << "\nJa adquiriu produtos neste turno!\n";
+				cout << "\nJa adquiriu produtos ou ouro neste turno!\n";
 			}
 		} else {
 			cout << "\nA segunda fase ja terminou!\n";
 		}
 	} else if (str[0].compare("maismilitar") == 0) {
 		if (fase == 2) {
+
 			if (!s_f3_mil_tec) {
 				s_f3_mil_tec = true;
 				cmd_maismilitar();
@@ -374,9 +364,19 @@ void Controlador_Interface::ler_cmd(string comando) {
 void Controlador_Interface::mostra_lista_peq() {
 	cout << "\nAno: " << this->jogo->get_ano();
 	cout << "\nTurno: " << this->jogo->get_turno();
-	cout << "\nFase: " << this->jogo->get_fase();
+	cout << "\nFase: " << this->jogo->get_fase() + 1;
 	cout << "\nUltimo fator sorte gerado: " << this->jogo->get_fator_sorte();
 	cout << "\nPontuacao: " << this->jogo->get_pontuacao();
+	cout << endl << "Produtos: " << this->jogo->get_mundo()->get_imperio()->get_armazem();
+	cout << endl << "Maximo produtos: " << this->jogo->get_mundo()->get_imperio()->get_max_armazem();
+	int* prod_ouro = this->jogo->get_mundo()->get_imperio()->possibilidade_adquirir_prod_ouro();
+	cout << endl << "Producao de produtos: " << prod_ouro[0];
+	cout << endl << "Ouro: " << this->jogo->get_mundo()->get_imperio()->get_cofre();
+	cout << endl << "Maximo ouro: " << this->jogo->get_mundo()->get_imperio()->get_max_cofre();
+	cout << endl << "Producao de ouro: " << prod_ouro[1];
+	delete prod_ouro;
+	cout << endl << "Forca militar: " << this->jogo->get_mundo()->get_imperio()->get_forca_militar();
+	cout << endl << "Maximo forca militar: " << this->jogo->get_mundo()->get_imperio()->get_max_forca_militar();
 	cout << "\n------------------";
 }
 

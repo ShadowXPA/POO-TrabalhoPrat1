@@ -10,7 +10,6 @@ int main(int argc, char *argv[], char **envp) {
 	// TODO
 	// Falta mudar para getMundo() e getImperio()
 	controlador_interface->inicia();
-
 	//jogo->inicia();
 	/*while (jogo->get_jogo_a_correr()) {
 		string str="";

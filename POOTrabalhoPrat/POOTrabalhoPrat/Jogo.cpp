@@ -87,11 +87,15 @@ void Jogo::recolha_produtos_ouro() {
 void Jogo::occorencia_evento() {
 	this->evento->efeito(this->get_mundo()->get_imperio(), this->get_ano());
 	this->set_proximo_evento(this->mundo->get_imperio()->gerar_fator_sorte(0, 3));
+	if (this->mundo->get_imperio()->tamanho_territorios_conquistados() == 0) {
+		this->jogo_a_correr = false;
+	}
 }
 
 void Jogo::termina_turno() {
+	this->turno++;
 	this->pontuacao = this->mundo->get_imperio()->obter_pontos(this->mundo->get_num_territorios());
-	if (this->get_ano() == 3.0f) {
+	if (this->get_ano() >= 3.0f) {
 		this->jogo_a_correr = false;
 	}
 }
