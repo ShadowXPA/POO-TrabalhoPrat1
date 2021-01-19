@@ -28,7 +28,7 @@ void Controlador_Interface::cmd_cria(string tipo, const int n) {
 		} else if (tipo.compare("mina") == 0) {
 			this->jogo->adicionar_territorio(new Mina());
 		} else if (tipo.compare("montanha") == 0) {
-			this->jogo->adicionar_territorio(new Montanha(this->jogo->get_turno()));
+			this->jogo->adicionar_territorio(new Montanha());
 		} else if (tipo.compare("planicie") == 0) {
 			this->jogo->adicionar_territorio(new Planicie());
 		} else if (tipo.compare("pescaria") == 0) {

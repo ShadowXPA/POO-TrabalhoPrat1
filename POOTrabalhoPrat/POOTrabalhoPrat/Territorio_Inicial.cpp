@@ -10,7 +10,7 @@ void Territorio_Inicial::set_criacao_produtos(int) {}
 
 void Territorio_Inicial::set_criacao_ouro(int) {}
 
-bool Territorio_Inicial::ser_conquistado(Imperio_Jogador &imp, int = 0) {
+bool Territorio_Inicial::ser_conquistado(Imperio_Jogador &imp, int) {
     return false;
 }
 

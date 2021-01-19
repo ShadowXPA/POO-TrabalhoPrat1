@@ -13,7 +13,7 @@ Ilha::Ilha(Ilha &ter) : Territorio(ter) {}
 
 Ilha::~Ilha() {}
 
-bool Ilha::ser_conquistado(Imperio_Jogador &imp, int = 0) {
+bool Ilha::ser_conquistado(Imperio_Jogador &imp, int) {
 	// Verificar se tem as tecnologias necessárias
 	bool adquiriu_tec = imp.adquiriu_tecnologia("misseisteleguiados");
 	size_t numero_terr_conquistados = imp.tamanho_territorios_conquistados();
